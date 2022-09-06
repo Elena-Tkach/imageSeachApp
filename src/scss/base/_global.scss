@@ -15,8 +15,8 @@ body {
 
 body {
     position: relative;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans",
-        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 100%;
     line-height: normal;
     color: $black;
@@ -26,13 +26,23 @@ body {
     flex-direction: column;
 }
 
-
-.containers {
+.container {
     width: 100%;
     margin: 0 auto;
     padding: 0 15px;
     transition: all 0.6s ease;
 
+    @include tablet-992 {
+        padding: 0 25px;
+    }
+
+    @include laptopM-1440 {
+        padding: 0 35px;
+    }
+
+    @include laptopM-1880 {
+        width: 1800px;
+    }
 }
 
 .visually-hidden {
@@ -44,7 +54,6 @@ body {
     @include list-reset;
 }
 
-
 img {
     max-width: 100%;
     object-fit: cover;
@@ -54,7 +63,3 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
-
-
-
