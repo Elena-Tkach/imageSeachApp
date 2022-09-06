@@ -1,0 +1,32 @@
+.main {
+  padding: 50px 0 150px;
+}
+
+.list-reset {
+  @include list-reset;
+}
+
+.title {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+}
+
+.title-h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.2em;
+
+  @include tablet-992 {
+    font-size: 2.5em;
+  }
+}
