@@ -20,6 +20,11 @@
     -webkit-text-stroke: 1px #{$color};
 }
 
+@mixin box-shadow($opacity) {
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(34, 60, 80, $opacity);
+    -moz-box-shadow: 0px 2px 10px 0px rgba(34, 60, 80, $opacity);
+    box-shadow: 0px 2px 10px 0px rgba(34, 60, 80, $opacity);
+}
 
 //adaptive
 @mixin laptopM-1880 {
