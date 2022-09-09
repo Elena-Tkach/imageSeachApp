@@ -1,1 +1,3 @@
-console.log('Hello')
+import { cardsImg } from "./createАrrayСards";
+
+console.log(cardsImg);
