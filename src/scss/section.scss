@@ -263,11 +263,6 @@
 
     &__item {
       margin-right: 20px;
-
-      :hover {
-        color: $white;
-        background: $skyblue;
-      }
     }
   }
 
@@ -276,5 +271,15 @@
     border-radius: $radius-04;
     padding: 5px 10px;
     transition: $transition-06;
+
+    &:hover {
+      color: $white;
+      background: $skyblue;
+    }
+  }
+
+  .active &-item__link {
+    color: $white;
+    background: $yellow;
   }
 }
