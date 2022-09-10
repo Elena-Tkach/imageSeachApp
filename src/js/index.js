@@ -1,3 +1,5 @@
-import { cardsImg } from "./createАrrayСards";
+import { createCards } from "./createАrrayСards";
 
-console.log(cardsImg);
+const cardsContainer = document.querySelector('.js-cards-container');
+
+createCards(cardsContainer);
