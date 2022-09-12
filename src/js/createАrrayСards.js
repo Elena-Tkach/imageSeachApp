@@ -100,7 +100,7 @@ export function createCards(cardsContainer) {
                     </p>
                   </div>
 
-                  <ul class="card-info__tags-list tags-list">
+                  <ul class="card-info__tags-list tags-list js-list-tags">
                     <li class="tags-list__item">
                       <a href="#" class="tags-list__link">#${card.tags[0]}</a>
                     </li>
