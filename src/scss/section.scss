@@ -278,7 +278,7 @@
     }
   }
 
-  .active &-item__link {
+  &-item__link.active {
     color: $white;
     background: $yellow;
   }
