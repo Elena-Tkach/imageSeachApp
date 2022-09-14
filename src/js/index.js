@@ -1,9 +1,11 @@
 'use strict;'
 import { createCards } from './createАrrayСards';
-import { bodyBg } from './bgPage';
+import { changeBgPage } from './changeBgPage';
 
 const body = document.body;
 const cardsContainer = document.querySelector('.js-cards-container');
+const paginationPages = document.querySelectorAll('.js-page-btn');
+const paginationBtns = document.querySelectorAll('.js-pagination-arrow');
 
 createCards(cardsContainer)
-bodyBg(body);
+changeBgPage(body, paginationPages, paginationBtns);
