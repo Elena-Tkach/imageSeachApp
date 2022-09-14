@@ -26,31 +26,18 @@ body {
 }
 
 .container {
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
-    padding: 0 15px;
+
     transition: all 0.6s ease;
 
     @include tablet-992 {
-        padding: 0 25px;
-    }
-
-    @include laptopM-1440 {
-        padding: 0 35px;
+        width: 96%;
     }
 
     @include laptopM-1880 {
         width: 1800px;
     }
-}
-
-.visually-hidden {
-    @include visually-hidden;
-}
-
-.list-reset {
-    margin: 0;
-    @include list-reset;
 }
 
 img {

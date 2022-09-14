@@ -2,13 +2,20 @@
   padding: 50px 0 150px;
 }
 
-.list-reset {
-  @include list-reset;
-}
-
 .title {
   padding: 0;
   margin: 0;
+
+  &--first {
+    text-align: center;
+
+    @include font($weight: 500, $size: 2em);
+
+    @include tablet-992 {
+      font-size: 2.5em;
+      @include font($weight: 500, $size: 2.5em);
+    }
+  }
 }
 
 p {
@@ -16,17 +23,54 @@ p {
   margin: 0;
 }
 
+.input {
+  border: none;
+  outline: none;
+  transition: $transition-06;
+
+  &--yellow {
+    border-radius: $radius-04;
+    box-shadow: 0 0 0 1px $yellow;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 0 1px $skyblue;
+    }
+  }
+
+  &--font {
+    @include font();
+  }
+}
+
 .btn {
   cursor: pointer;
   border: none;
-}
+  border-radius: $radius-04;
+  background-color: transparent;
+  transition: $transition-06;
 
-.title-h1 {
-  text-align: center;
-  font-weight: 600;
-  font-size: 2.2em;
+  &--yellow {
+    color: $black;
+    background-color: $yellow;
 
-  @include tablet-992 {
-    font-size: 2.5em;
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $skyblue;
+    }
+  }
+
+  &--white {
+    &:hover {
+      color: $white;
+      background: $skyblue;
+    }
+  }
+
+  &--font {
+    @include font($size: 16px);
   }
 }
+
+

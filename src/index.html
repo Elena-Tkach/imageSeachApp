@@ -19,354 +19,41 @@
     <main class="main">
         <div class="container">
             <section class="app">
-                <h1 class="app__title title title-h1">
+                <h1 class="app__title title title--first">
                     Поисковик фото
                 </h1>
 
-                <form class="app__form form" action="#">
-                    <input class="form__search" type="search" name="search" placeholder="введите тему ..." required>
-                    <button class="form__btn btn" type="submit">Поиск</button>
+                <form class="app__search  search" action="#">
+                    <input class="search__input input input--yellow input--font" type="search" name="search"
+                        placeholder="Введите тему ..." required>
+                    <button class="search__btn btn btn--yellow btn--font" type="submit">Поиск</button>
                 </form>
 
-                <ul class="app__list cards list-reset js-cards-container">
-                    <!-- <li class="cards__item card">
-                        <figure class="card__figure">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1662511024026-bc935d6d7962?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li>
-
-                    <li class="cards__item card">
-                        <figure class="card__figure">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1662412740518-21df8af88320?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li>
-
-                    <li class="cards__item card">
-                        <figure class="card__figure ">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTF8fHBlb3BsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li>
-
-                    <li class="cards__item card">
-                        <figure class="card__figure ">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1662515291656-304de59d70de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li>
-
-                    <li class="cards__item card">
-                        <figure class="card__figure ">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1540331547168-8b63109225b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fHBlb3BsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li>
-
-                    <li class="cards__item card">
-                        <figure class="card__figure ">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1662496750976-fa33e4dc7152?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li>
-
-                    <li class="cards__item card">
-                        <figure class="card__figure ">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1662469863610-0cf8b6e68159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li>
-
-                    <li class="cards__item card">
-                        <figure class="card__figure ">
-                            <img class="card__img"
-                                src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE3fHxwZW9wbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-                                alt="oficce">
-
-                            <figcaption class="card__wrapper card-info">
-                                <div class="card-info__top top-content">
-                                    <ul class="top-content__top-list top-list">
-                                        <li class="top-list__item">
-                                            <button class="top-list__like btn"></button>
-                                            <span class="top-list__rating">100</span>
-                                        </li>
-                                        <li class="top-list__item">
-                                            <time class="top-list__date" datetime="2022-09-05">05/09/22</time>
-                                        </li>
-                                    </ul>
-
-                                    <p class="top-content__author">
-                                        <span class="top-content__span">by</span>
-                                        <span class="top-content__name">John Doe</span>
-                                    </p>
-                                </div>
-
-                                <ul class="card-info__tags-list tags-list">
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Red</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Yellow</a>
-                                    </li>
-                                    <li class="tags-list__item">
-                                        <a href="#" class="tags-list__link">#Green</a>
-                                    </li>
-                                </ul>
-                            </figcaption>
-                        </figure>
-                    </li> -->
+                <ul class="app__list cards  js-cards-container">
+                    
                 </ul>
 
                 <div class="app__pagination pagination">
-                    <ul class="pagination__list arraws list-reset">
-                        <li class="arrows__item">
-                            <button class="button-pag btn-prev btn js-pagination-btn"></button>
-                        </li>
-                        <li class="arrows__item">
-                            <button class="button-pag btn-next btn js-pagination-btn"></button>
-                        </li>
-                    </ul>
+                    <div class="pagination__arrows arrows">
+                        <button class="arrow arrow--prev btn js-pagination-arrow"></button>
+                        <button class="arrow arrow--next btn js-pagination-arrow"></button>
+                    </div>
 
-                    <ul class="pagination__list-num list-num list-reset">
-                        <li class="list-num__item pagination-item">
-                            <a href="#" class="pagination-item__link active js-pag-item">1</a>
+                    <ul class="pagination__pages pages ">
+                        <li class="pagination__page page">
+                            <button class="page__btn btn btn--font btn--white js-page-btn active">1</button>
                         </li>
-                        <li class="list-num__item pagination-item ">
-                            <a href="#" class="pagination-item__link js-pag-item">2</a>
+                        <li class="pagination__page page">
+                            <button class="page__btn btn btn--font btn--white js-page-btn">2</button>
                         </li>
-                        <li class="list-num__item pagination-item ">
-                            <a href="#" class="pagination-item__link js-pag-item">3</a>
+                        <li class="pagination__page page">
+                            <button class="page__btn btn btn--font btn--white js-page-btn">3</button>
                         </li>
-                        <li class="list-num__item pagination-item">
-                            <a href="#" class="pagination-item__link  js-pag-item">...</a>
+                        <li class="pagination__page page">
+                            <button class="page__btn btn btn--font btn--white js-page-btn">...</button>
                         </li>
-                        <li class="list-num__item pagination-item ">
-                            <a href="#" class="pagination-item__link  js-pag-item">10</a>
+                        <li class="pagination__page page">
+                            <button class="page__btn btn btn--font btn--white js-page-btn">10</button>
                         </li>
                     </ul>
                 </div>

@@ -76,45 +76,42 @@ export function createCards(cardsContainer) {
   const addCards = (cards, cardsContainer) => {
     cardsContainer.innerHTML = cards.map((card) => {
       return ` 
-          <li class="cards__item card">
-            <figure class="card__figure">
-              <img class="card__img"
-                src="${card.imageLink}"
-                alt="${card.alt}">
+            <li class="cards__item card">
+              <figure class="card__content">
+                  <img class="card__img" src="${card.imageLink}" alt="${card.alt}">
 
-                <figcaption class="card__wrapper card-info">
-                  <div class="card-info__top top-content">
-                    <ul class="top-content__top-list top-list">
-                      <li class="top-list__item">
-                        <button class="top-list__like btn js-btn-likes"></button>
-                        <span class="top-list__rating js-likes-result">${card.likes}</span>
-                      </li>
-                      <li class="top-list__item">
-                        <time class="top-list__date js-date" datetime="2022-09-05">${card.date}</time>
-                      </li>
-                    </ul>
+                  <figcaption class="card__info info">
+                      <div class="info__header">
+                          <div class="info__rating rating">
+                              <button class="rating__like btn js-btn-likes"></button>
+                              <span class="rating__result js-likes-result">${card.likes}</span>
+                          </div>
 
-                    <p class="top-content__author">
-                      <span class="top-content__span">by</span>
-                      <span class="top-content__name">${card.author}</span>
-                    </p>
-                  </div>
+                          <div class="info__date">
+                              <time class="date js-date" datetime="2022-09-05">${card.date}</time>
+                          </div>
 
-                  <ul class="card-info__tags-list tags-list js-list-tags">
-                    <li class="tags-list__item">
-                      <a href="#" class="tags-list__link">#${card.tags[0]}</a>
-                    </li>
+                          <p class="info__author author">
+                              by
+                              <span class="author__name">${card.author}</span>
+                          </p>
+                      </div>
 
-                    <li class="tags-list__item">
-                      <a href="#" class="tags-list__link">#${card.tags[1]}</a>
-                    </li>
+                      <ul class="info__tags tags js-tags">
+                          <li class="tags__item">
+                              <a href="#" class="tags__link">#${card.tags[0]}</a>
+                          </li>
 
-                    <li class="tags-list__item">
-                    <a href="#" class="tags-list__link">#${card.tags[2]}</a>
-                  </li>
-                  </ul>
-                </figcaption>
-            </figure>
+                          <li class="tags__item">
+                              <a href="#" class="tags__link">#${card.tags[1]}</a>
+                          </li>
+
+                          <li class="tags__item">
+                              <a href="#" class="tags__link">#${card.tags[2]}</a>
+                          </li>
+                      </ul>
+                  </figcaption>
+              </figure>
           </li>
         `;
     }).join(``);

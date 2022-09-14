@@ -1,0 +1,81 @@
+@include mobile-425 {
+  .search__input {
+    width: 70%;
+    padding: 10px 15px;
+  }
+
+  .search__btn {
+    width: 28%;
+    padding: 10px 15px;
+  }
+
+  .btn--font {
+    @include font();
+  }
+
+  .cards {
+    grid-auto-rows: 50vw;
+  }
+}
+
+@include mobile-567 {
+  .cards {
+    grid-auto-rows: 50vw;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include tablet-768 {
+  .search__input {
+    width: 60%;
+    margin-bottom: 0;
+  }
+
+  .arrows {
+    width: 50%;
+  }
+}
+
+@include tablet-992 {
+  .app__title {
+    margin-bottom: 90px;
+  }
+
+  .search__input {
+    padding: 15px;
+  }
+
+  .search__btn {
+    width: 20%;
+    padding: 16px;
+  }
+
+  .cards {
+    grid-auto-rows: 30vw;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pagination__page {
+    margin-right: 20px;
+  }
+
+  .arrows {
+    width: 30%;
+  }
+}
+
+@include laptopM-1440 {
+  .search__input {
+    width: 40%;
+  }
+
+  .search__btn {
+    width: 16%;
+  }
+
+  .cards {
+    margin-bottom: 100px;
+    grid-auto-rows: 25vw;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
