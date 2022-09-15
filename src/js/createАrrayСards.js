@@ -5,7 +5,7 @@ export function createCards(cardsContainer) {
       alt: 'image',
       likes: 16,
       date: '05/09/22',
-      tags: ['Yellow', 'Blue', 'Red'],
+      tags: ['Yellow-golden-blue', 'Blue', 'Red'],
       author: 'John Doe',
     },
 
@@ -99,15 +99,15 @@ export function createCards(cardsContainer) {
 
                       <ul class="info__tags tags js-tags">
                           <li class="tags__item">
-                              <a href="#" class="tags__link">#${card.tags[0]}</a>
+                              <a href="#" class="tags__link"><p class="tags__text">#${card.tags[0]}</p></a>
                           </li>
 
                           <li class="tags__item">
-                              <a href="#" class="tags__link">#${card.tags[1]}</a>
+                              <a href="#" class="tags__link"><p class="tags__text">#${card.tags[1]}</p></a>
                           </li>
 
                           <li class="tags__item">
-                              <a href="#" class="tags__link">#${card.tags[2]}</a>
+                              <a href="#" class="tags__link"><p class="tags__text">#${card.tags[2]}</p></a>
                           </li>
                       </ul>
                   </figcaption>

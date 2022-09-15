@@ -144,7 +144,16 @@
 }
 
 .tags__item {
-  margin-right: 4%;
+  padding: 2px;
+  margin-right: 12px;
+  max-width: 25%;
+  transition: $transition-06;
+
+  &:hover {
+    max-width: 50%;
+    white-space: normal;
+    transition: $transition-06;
+  }
 
   &:last-child {
     margin-right: 0;
@@ -152,13 +161,19 @@
 }
 
 .tags__link {
-  font: $font;
+  @include font();
   color: $white;
   transition: $transition-06;
 
   &:hover {
     color: $yellow;
   }
+}
+
+.tags__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pagination {
