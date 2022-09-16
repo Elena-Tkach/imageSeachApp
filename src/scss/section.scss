@@ -80,24 +80,21 @@
 .info {
   padding: 15px;
   display: flex;
-  justify-content: flex-end;
   flex-direction: column;
+  height: 100%;
 
   color: $white;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 212, 255, 0) 30%);
+  @include bg-overlay-gradient();
 
   &__header {
-    margin-bottom: 20px;
-  }
-
-  &__author {
-    width: 100%;
+    margin-bottom: 8px;
   }
 }
 
 .info__header {
+  flex: 0 0 auto;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -124,11 +121,16 @@
 }
 
 .date {
+  display: flex;
+  align-items: center;
   @include font();
 }
 
+.info__body {
+  flex: 1 1 auto;
+}
+
 .author {
-  text-align: right;
   @include font($size: 16px);
 
   &__name {
@@ -137,28 +139,42 @@
 }
 
 .tags {
+  flex: 0 1 auto;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
+  flex-wrap: wrap;
   @include list-reset;
 }
 
 .tags__item {
-  margin-right: 4%;
+  flex: 0 1 auto;
+  padding: 5px;
+  margin: 5px;
 
-  &:last-child {
-    margin-right: 0;
+  border-radius: $radius-04;
+  background-color: $light-white;
+  transition: $transition-06;
+
+  &:hover {
+    max-width: 100%;
+    white-space: normal;
+    transition: $transition-06;
   }
 }
 
 .tags__link {
-  font: $font;
   color: $white;
   transition: $transition-06;
 
   &:hover {
     color: $yellow;
   }
+}
+
+.tags__text {
+  @include font($size: 14px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pagination {

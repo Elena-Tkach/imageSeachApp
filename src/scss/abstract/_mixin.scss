@@ -9,7 +9,18 @@
     -moz-box-shadow: $x $y $blur $spread $color;
     box-shadow: $x $y $blur $spread $color;
 }
-$font: 300 18px sans-serif;
+
+@mixin bg-overlay-gradient(
+    $color: rgba(0, 0, 0, 0.167),
+    $deg: 0,
+    $color-first: rgba(0, 0, 0, 0.8),
+    $percent-first: 0%,
+    $color-second: rgba(0, 212, 255, 0),
+    $percent-second: 100%
+) {
+    background: $color;
+    background: linear-gradient($deg, $color-first $percent-first, $color-second $percent-second);
+}
 
 @mixin font($weight: 300, $size: 18px, $family: sans-serif) {
     font: $weight $size $family;
