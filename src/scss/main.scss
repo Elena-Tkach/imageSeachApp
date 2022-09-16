@@ -16,6 +16,10 @@
     @include font($size: 14px);
   }
 
+  &--third {
+    @include font($weight: 500, $size: 20px);
+  }
+
   &--yellow {
     color: $yellow;
   }
@@ -24,6 +28,21 @@
 p {
   padding: 0;
   margin: 0;
+}
+
+.text {
+  @include font($size: 14px);
+  transition: $transition-06;
+
+  &--black {
+    color: $black;
+  }
+
+  &--space {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .input {
@@ -64,10 +83,18 @@ p {
     }
   }
 
-  &--white {
-    &:hover {
+  &--white-h {
+    &:hover,
+    &:focus {
       color: $white;
       background: $skyblue;
+    }
+  }
+
+  &--border-yellow-h {
+    padding: 5px 8px;
+    &:hover {
+      box-shadow: $box-border-yellow;
     }
   }
 

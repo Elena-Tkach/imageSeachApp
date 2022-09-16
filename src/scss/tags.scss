@@ -1,0 +1,43 @@
+.tags {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  @include list-reset;
+}
+
+.tags__item {
+  margin: 5px;
+  transition: $transition-06;
+}
+
+.tag {
+  flex: 0 1 auto;
+  padding: 5px;
+  border-radius: $radius-04;
+  background-color: $light-white;
+  transition: $transition-06;
+
+  &:hover {
+    max-width: 100%;
+    white-space: normal;
+    transition: $transition-06;
+  }
+
+  &--border-yellow {
+    outline: none;
+    box-shadow: $box-border-yellow;
+
+    &:hover {
+      box-shadow: $box-border-skyblue;
+    }
+  }
+}
+
+.tags__link {
+  &:hover {
+    .text {
+      color: $yellow;
+      transition: $transition-06;
+    }
+  }
+}

@@ -41,19 +41,19 @@
 
                     <ul class="pagination__pages pages ">
                         <li class="pagination__page page">
-                            <button class="page__btn btn btn--font btn--white js-page-btn active">1</button>
+                            <button class="page__btn btn btn--font btn--white-h js-page-btn active">1</button>
                         </li>
                         <li class="pagination__page page">
-                            <button class="page__btn btn btn--font btn--white js-page-btn">2</button>
+                            <button class="page__btn btn btn--font btn--white-h js-page-btn">2</button>
                         </li>
                         <li class="pagination__page page">
-                            <button class="page__btn btn btn--font btn--white js-page-btn">3</button>
+                            <button class="page__btn btn btn--font btn--white-h js-page-btn">3</button>
                         </li>
                         <li class="pagination__page page">
-                            <button class="page__btn btn btn--font btn--white js-page-btn">...</button>
+                            <button class="page__btn btn btn--font btn--white-h js-page-btn">...</button>
                         </li>
                         <li class="pagination__page page">
-                            <button class="page__btn btn btn--font btn--white js-page-btn">10</button>
+                            <button class="page__btn btn btn--font btn--white-h js-page-btn">10</button>
                         </li>
                     </ul>
                 </div>
@@ -62,13 +62,60 @@
         </div>
     </main>
 
-    <div class="modal">
-        <div class="modal__container" aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
-            <button class="modal__close btn" aria-label="Закрыть модальное окно"></button>
+    <div class="modal js-modal-sort">
+        <div class="modal__container " aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
+            <button class="modal__close btn btn--close" aria-label="Закрыть модальное окно"></button>
 
+            <div class="modal__sort sort">
+                <h3 class="sort__title title title--third">Cортировать:</h3>
+                <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-date-up">
+                    <span class="sort__label">дата:</span> по возрастанию
+                </button>
+                <button class="sort__btn btn  btn--font btn--border-yellow-h js-sort-date-down"><span
+                        class="sort__label">дата:</span> по
+                    убыванию
+                </button>
+                <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up"> <span
+                        class="sort__label">рейтинг:</span> от
+                    большего</button>
+                <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up"> <span
+                        class="sort__label">рейтинг:</span> от
+                    меньшего</button>
+            </div>
+
+            <div class="modal__filter filter">
+                <h3 class="sort__title title title--third">Фильтр по тегам:</h3>
+
+                <ul class="filter__tags tags">
+                    <li class="tags__item tag tag--border-yellow">
+                        <a href="#" class="tags__link">
+                            <p class="text text--black">Yellow-golden-blue</p>
+                        </a>
+                    </li>
+
+                    <li class="tags__item tag tag--border-yellow">
+                        <a href="#" class="tags__link">
+                            <p class="text text--black text--space">Blue</p>
+                        </a>
+                    </li>
+
+                    <li class="tags__item tag tag--border-yellow">
+                        <a href="#" class="tags__link">
+                            <p class="text text--black text--space">Red</p>
+                        </a>
+                    </li>
+
+                    <li class="tags__item tag tag--border-yellow">
+                        <a href="#" class="tags__link">
+                            <p class="text text--black text--space">Kartopu</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
+    <div class="overlay"></div>
 </body>
 
 </html>

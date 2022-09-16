@@ -1,0 +1,68 @@
+.pagination {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__arrows {
+    z-index: 2;
+  }
+
+  &__pages {
+    z-index: 2;
+  }
+}
+
+.arrows {
+  width: 100%;
+  position: absolute;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: $radius-04;
+  transition: $transition-06;
+}
+
+.arrow--prev {
+  background: url(./img/arrow-left.png) no-repeat center;
+
+  &:hover {
+    background: url(./img/arrow-left-y.png) no-repeat center $skyblue;
+  }
+}
+
+.arrow--next {
+  background: url(./img/arrow-right.png) no-repeat center;
+
+  &:hover {
+    background: url(./img/arrow-right-y.png) no-repeat center $skyblue;
+  }
+}
+
+.pages {
+  display: flex;
+  @include list-reset;
+}
+
+.pagination__page {
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.page__btn {
+  padding: 5px 10px;
+}
+
+.page__btn.active {
+  color: $white;
+  background: $yellow;
+}

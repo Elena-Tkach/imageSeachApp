@@ -102,16 +102,16 @@ export function createCards(cardsContainer) {
                       </div>  
 
                       <ul class="info__tags tags js-tags">
-                          <li class="tags__item">
-                              <a href="#" class="tags__link"><p class="tags__text">#${card.tags[0]}</p></a>
+                          <li class="tags__item tag tag--bg tag--width">
+                              <a href="#" class="tags__link"><p class="text text--space">#${card.tags[0]}</p></a>
                           </li>
 
-                          <li class="tags__item">
-                              <a href="#" class="tags__link"><p class="tags__text">#${card.tags[1]}</p></a>
+                          <li class="tags__item  tag tag--bg tag--width">
+                              <a href="#" class="tags__link"><p class="text text--space">#${card.tags[1]}</p></a>
                           </li>
 
-                          <li class="tags__item">
-                              <a href="#" class="tags__link"><p class="tags__text">#${card.tags[2]}</p></a>
+                          <li class="tags__item  tag tag--bg tag--width">
+                              <a href="#" class="tags__link"><p class="text text--space">#${card.tags[2]}</p></a>
                           </li>
                       </ul>
                   </figcaption>
@@ -122,8 +122,6 @@ export function createCards(cardsContainer) {
   }
 
   addCards(cards, cardsContainer);
-
-
 
 
 };
