@@ -16,6 +16,11 @@
   .cards {
     grid-auto-rows: 50vw;
   }
+
+  .tags__item {
+    padding: 5px 8px;
+    max-width: 40%;
+  }
 }
 
 @include mobile-567 {
@@ -23,12 +28,26 @@
     grid-auto-rows: 50vw;
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .tags__item {
+    max-width: 100%;
+  }
 }
 
 @include tablet-768 {
   .search__input {
     width: 60%;
     margin-bottom: 0;
+  }
+  .tags {
+    flex-wrap: nowrap;
+  }
+  .tags__text {
+    @include font($size: 16px);
+  }
+
+  .tags__item {
+    max-width: 30%;
   }
 
   .arrows {
@@ -39,6 +58,11 @@
 @include tablet-992 {
   .app__title {
     margin-bottom: 90px;
+  }
+
+  .title--first {
+    font-size: 2.5em;
+    @include font($weight: 500, $size: 2.5em);
   }
 
   .search__input {
@@ -58,7 +82,6 @@
   .pagination__page {
     margin-right: 20px;
   }
-
   .arrows {
     width: 30%;
   }
