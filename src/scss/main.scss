@@ -1,5 +1,6 @@
 .main {
-  padding: 50px 0 150px;
+  position: relative;
+  padding: 60px 0 150px;
 }
 
 .title {
@@ -68,6 +69,7 @@ p {
 .btn {
   cursor: pointer;
   border: none;
+  outline: none;
   border-radius: $radius-04;
   background-color: transparent;
   transition: $transition-06;
@@ -93,12 +95,38 @@ p {
 
   &--border-yellow-h {
     padding: 5px 8px;
-    &:hover {
+    &:hover,
+    &:focus {
       box-shadow: $box-border-yellow;
     }
   }
 
   &--font {
     @include font($size: 16px);
+  }
+}
+
+.btn-open-sort {
+  width: 50px;
+  height: 50px;
+  background: url("img/filter.png") no-repeat center;
+  border-radius: 50%;
+
+  &:hover,
+  &:focus {
+    background-color: $skyblue;
+    background: url("img/filter-white.png") no-repeat center $skyblue;
+  }
+}
+
+.btn-close-sort {
+  background: url("img/close.png") no-repeat center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  &:hover,
+  &:focus {
+    background: url("img/close-white.png") no-repeat center $skyblue;
   }
 }

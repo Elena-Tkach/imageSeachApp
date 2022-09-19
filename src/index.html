@@ -19,6 +19,9 @@
     <main class="main">
         <div class="container">
             <section class="app">
+                <button class="app__btn-sort btn btn__open-sort btn-open-sort js-btn-sort-modal" aria-label="Открыть меню сортировки"
+                    title="Открыть меню сортировки"></button>
+
                 <h1 class="app__title title title--first">
                     Поисковик фото
                 </h1>
@@ -62,9 +65,9 @@
         </div>
     </main>
 
-    <div class="modal js-modal-sort open">
+    <div class="modal js-modal-sort">
         <div class="modal__container " aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
-            <button class="modal__close btn btn--close" aria-label="Закрыть модальное окно"></button>
+            <button class="modal__close btn btn__close btn-close-sort" aria-label="Закрыть модальное окно"></button>
 
             <div class="modal__sort sort">
                 <h3 class="sort__title title title--third">Cортировать:</h3>
@@ -115,7 +118,7 @@
         </div>
     </div>
 
-    <div class="overlay open"></div>
+    <div class="overlay js-overlay"></div>
 </body>
 
 </html>
