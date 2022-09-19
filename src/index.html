@@ -19,8 +19,8 @@
     <main class="main">
         <div class="container">
             <section class="app">
-                <button class="app__btn-sort btn btn__open-sort btn-open-sort js-btn-sort-modal" aria-label="Открыть меню сортировки"
-                    title="Открыть меню сортировки"></button>
+                <button class="app__btn-sort btn btn__open-sort btn-open-sort js-btn-sort-modal"
+                    aria-label="Открыть меню сортировки" title="Открыть меню сортировки"></button>
 
                 <h1 class="app__title title title--first">
                     Поисковик фото
@@ -65,56 +65,55 @@
         </div>
     </main>
 
-    <div class="modal js-modal-sort">
-        <div class="modal__container " aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
-            <button class="modal__close btn btn__close btn-close-sort" aria-label="Закрыть модальное окно"></button>
+    <div class="modal js-modal-sort" aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
 
-            <div class="modal__sort sort">
-                <h3 class="sort__title title title--third">Cортировать:</h3>
-                <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-date-up">
-                    <span class="sort__label">дата:</span> по возрастанию
-                </button>
-                <button class="sort__btn btn  btn--font btn--border-yellow-h js-sort-date-down"><span
-                        class="sort__label">дата:</span> по
-                    убыванию
-                </button>
-                <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up"> <span
-                        class="sort__label">рейтинг:</span> от
-                    большего</button>
-                <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up"> <span
-                        class="sort__label">рейтинг:</span> от
-                    меньшего</button>
-            </div>
+        <button class="modal__close btn btn__close btn-close-sort" aria-label="Закрыть модальное окно"></button>
 
-            <div class="modal__filter filter">
-                <h3 class="sort__title title title--third">Фильтр по тегам:</h3>
+        <div class="modal__sort sort">
+            <h3 class="sort__title title title--third">Cортировать:</h3>
+            <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-date-up">
+                <span class="sort__label">дата:</span> по возрастанию
+            </button>
+            <button class="sort__btn btn  btn--font btn--border-yellow-h js-sort-date-down"><span
+                    class="sort__label">дата:</span> по
+                убыванию
+            </button>
+            <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up"> <span
+                    class="sort__label">рейтинг:</span> от
+                большего</button>
+            <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up"> <span
+                    class="sort__label">рейтинг:</span> от
+                меньшего</button>
+        </div>
 
-                <ul class="filter__tags tags">
-                    <li class="tags__item tag tag--border-yellow">
-                        <a href="#" class="tags__link">
-                            <p class="text text--black">Yellow-golden-blue</p>
-                        </a>
-                    </li>
+        <div class="modal__filter filter">
+            <h3 class="sort__title title title--third">Фильтр по тегам:</h3>
 
-                    <li class="tags__item tag tag--border-yellow">
-                        <a href="#" class="tags__link">
-                            <p class="text text--black text--space">Blue</p>
-                        </a>
-                    </li>
+            <ul class="filter__tags tags">
+                <li class="tags__item tag tag--border-yellow">
+                    <a href="#" class="tags__link">
+                        <p class="text text--black">Yellow-golden-blue</p>
+                    </a>
+                </li>
 
-                    <li class="tags__item tag tag--border-yellow">
-                        <a href="#" class="tags__link">
-                            <p class="text text--black text--space">Red</p>
-                        </a>
-                    </li>
+                <li class="tags__item tag tag--border-yellow">
+                    <a href="#" class="tags__link">
+                        <p class="text text--black text--space">Blue</p>
+                    </a>
+                </li>
 
-                    <li class="tags__item tag tag--border-yellow">
-                        <a href="#" class="tags__link">
-                            <p class="text text--black text--space">Kartopu</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <li class="tags__item tag tag--border-yellow">
+                    <a href="#" class="tags__link">
+                        <p class="text text--black text--space">Red</p>
+                    </a>
+                </li>
+
+                <li class="tags__item tag tag--border-yellow">
+                    <a href="#" class="tags__link">
+                        <p class="text text--black text--space">Kartopu</p>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 

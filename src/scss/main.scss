@@ -97,6 +97,7 @@ p {
     padding: 5px 8px;
     &:hover,
     &:focus {
+      color: $yellow;
       box-shadow: $box-border-yellow;
     }
   }
@@ -129,4 +130,8 @@ p {
   &:focus {
     background: url("img/close-white.png") no-repeat center $skyblue;
   }
+}
+
+.no-scroll {
+  overflow: hidden;
 }
