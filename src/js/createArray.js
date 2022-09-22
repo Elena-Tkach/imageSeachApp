@@ -1,6 +1,6 @@
-export function createCards(cardsContainer) {
-  const cards = [
-    {
+export const cards = [
+
+	{
       imageLink: 'https://images.unsplash.com/photo-1662511024026-bc935d6d7962?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60',
       title: 'Happy girl',
       likes: 16,
@@ -71,57 +71,4 @@ export function createCards(cardsContainer) {
       tags: ['Yellow', 'Blue', 'Red'],
       author: 'John Doe',
     },
-  ];
-
-  const addCards = (cards, cardsContainer) => {
-    cardsContainer.innerHTML = cards.map((card) => {
-      return ` 
-            <li class="cards__item card">
-              <figure class="card__content">
-                  <img class="card__img" src="${card.imageLink}" alt="${card.alt}">
-
-                  <figcaption class="card__info info">
-                      <div class="info__header">
-                          <div class="info__rating rating">
-                              <button class="rating__like btn js-btn-likes"></button>
-                              <span class="rating__result js-likes-result">${card.likes}</span>
-                          </div>
-
-                          <div class="info__date">
-                              <time class="date js-date" datetime="2022-09-05">${card.date}</time>
-                          </div>
-                      </div>
-
-                      <div class="info__body"> 
-                        
-                        <p class="info__author author">
-                        by
-                            <span class="author__name">${card.author}</span>
-                        </p>
-                        <h2 class="info__title title title--second title--yellow">${card.title}</h2>
-                      </div>  
-
-                      <ul class="info__tags tags js-tags">
-                          <li class="tags__item tag tag--bg tag--width">
-                              <a href="#" class="tags__link"><p class="text text--space">#${card.tags[0]}</p></a>
-                          </li>
-
-                          <li class="tags__item  tag tag--bg tag--width">
-                              <a href="#" class="tags__link"><p class="text text--space">#${card.tags[1]}</p></a>
-                          </li>
-
-                          <li class="tags__item  tag tag--bg tag--width">
-                              <a href="#" class="tags__link"><p class="text text--space">#${card.tags[2]}</p></a>
-                          </li>
-                      </ul>
-                  </figcaption>
-              </figure>
-          </li>
-        `;
-    }).join(``);
-  }
-
-  addCards(cards, cardsContainer);
-
-
-};
+]
