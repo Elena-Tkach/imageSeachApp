@@ -36,10 +36,10 @@
 
                 </ul>
 
-                <template id="js-card">
+                 <template id="js-tmpl-card">
                     <li class="cards__item card">
                         <figure class="card__content">
-                            <img class="card__img"
+                            <img class="card__img js-tmpl-img"
                                 src="https://images.unsplash.com/photo-1662511024026-bc935d6d7962?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
                                 alt="${card.alt}">
 
@@ -47,11 +47,11 @@
                                 <div class="info__header">
                                     <div class="info__rating rating">
                                         <button class="rating__like btn js-btn-likes"></button>
-                                        <span class="rating__result js-likes-result">102</span>
+                                        <span class="rating__result js-tmpl-likes">102</span>
                                     </div>
 
                                     <div class="info__date">
-                                        <time class="date js-date" datetime="2022-09-05">05.09.2022</time>
+                                        <time class="date js-tmpl-date" datetime="2022-09-05">05.09.2022</time>
                                     </div>
                                 </div>
 
@@ -59,12 +59,12 @@
 
                                     <p class="info__author author">
                                         by
-                                        <span class="author__name">John Doe</span>
+                                        <span class="author__name js-tmpl-author">John Doe</span>
                                     </p>
-                                    <h2 class="info__title title title--second title--yellow">Happy girl</h2>
+                                    <h2 class="info__title title title--second title--yellow js-tmpl-title">Happy girl</h2>
                                 </div>
 
-                                <ul class="info__tags tags js-tags">
+                                <ul class="info__tags tags js-tmpl-tags">
                                     <li class="tags__item tag tag--bg tag--width">
                                         <a href="#" class="tags__link">
                                             <p class="text text--space">Yellow-golden-blue</p>
@@ -88,6 +88,7 @@
                     </li>
 
                 </template>
+
 
                 <div class="app__pagination pagination">
                     <div class="pagination__arrows arrows">

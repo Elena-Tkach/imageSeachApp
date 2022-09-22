@@ -1,4 +1,4 @@
-export const sortMenu = (body) => {
+export const modalSortMenu = (body) => {
   const btnOpenSortModalEl = document.querySelector('.js-btn-sort-modal');
   const modalSortEl = document.querySelector('.js-modal-sort');
   const btnCloseSortModalEl = document.querySelector('.btn-close-sort');
