@@ -28,7 +28,8 @@
     box-shadow: $box-border-yellow;
 
     &:hover {
-      box-shadow: $box-border-skyblue;
+      color: $yellow;
+      // box-shadow: $box-border-skyblue;
     }
   }
 }
