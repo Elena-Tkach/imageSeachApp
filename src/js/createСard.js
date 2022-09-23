@@ -14,16 +14,11 @@ export const createCard = (cardsContainer) => {
                 <p class="text text--space">#${tag}</p>
                 </a>
             </li>
-
           `;
-
         }).join(``)
-
       }
       </ul>
-
     `;
-
   };
  
   const addCards = (cards, cardsContainer) => {
