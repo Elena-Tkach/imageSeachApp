@@ -1,6 +1,7 @@
 import { getSortArrayTags } from './getSortArrayTags';
 
-export const createFilterTagList = (containerTagList) => {
+export const createFilterTagList = () => {
+	const containerTagList = document.querySelector('.js-tag-list');
 	const tagList = getSortArrayTags();
 
 
