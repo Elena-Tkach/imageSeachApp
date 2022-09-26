@@ -1,6 +1,8 @@
 import { cards } from './createArray';
 
-export const createCard = (cardsContainer) => {
+export const createCard = () => {
+const cardsContainer = document.querySelector('.js-cards-container');
+
 
   const tags = (tags) => {
 
