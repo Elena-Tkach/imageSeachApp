@@ -2,6 +2,8 @@ export const  changeBgPage = (body, paginationPages, paginationBtns) => {
 
 
   const colorArray = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da'];
+  
+
   const showPagination = (event) => {
     event.preventDefault();
     const target = event.target;
