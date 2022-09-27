@@ -37,6 +37,8 @@ export const sortCards = () => {
 	    return 0;
 	}
 
+	
+
 	createCard();
 
 	btnSortDateUp.addEventListener('click', () => {

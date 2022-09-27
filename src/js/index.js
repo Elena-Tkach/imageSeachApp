@@ -2,7 +2,7 @@
 import { openHideSidebar } from './sidebar';
 import { changeBgPage } from './changeBgPage';
 import { createFilterTagList } from './createFilterTagList';
-import { sortCards } from './sort/sortCards';
+import { sortCards } from './sort/sort';
 
 
 const body = document.body;
