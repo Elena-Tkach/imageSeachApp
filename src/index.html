@@ -19,7 +19,7 @@
     <main class="main">
         <div class="container">
             <section class="app">
-                <button class="app__btn-sort btn btn__open-sort btn-open-sort js-btn-sort-modal"
+                <button class="app__btn-sort btn btn__open-sort btn-open-sidebar js-btn-open-sidebar"
                     aria-label="Открыть меню сортировки" title="Открыть меню сортировки"></button>
 
                 <h1 class="app__title title title--first">
@@ -116,10 +116,10 @@
         </div>
     </main>
 
-    <div class="modal js-modal-sort" aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
-        <button class="modal__close btn btn__close btn-close-sort" aria-label="Закрыть модальное окно"></button>
+    <div class="sidebar js-sidebar" aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
+        <button class="sidebar__close btn btn__close btn-close-sidebar js-btn-close-sidebar" aria-label="Закрыть модальное окно"></button>
 
-        <div class="modal__sort sort">
+        <div class="sidebar__sort sort">
             <h3 class="sort__title title title--third">Cортировать:</h3>
             <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-date-up">
                 <span class="sort__label">дата:</span> по возрастанию
@@ -136,7 +136,7 @@
                 меньшего</button>
         </div>
 
-        <div class="modal__filter filter">
+        <div class="sidebar__filter filter">
             <h3 class="sort__title title title--third">Фильтр по тегам:</h3>
 
             <ul class="filter__tags tags js-tag-list">

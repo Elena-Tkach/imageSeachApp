@@ -1,5 +1,5 @@
 'use strict;'
-import { modalSortMenu } from './modalSortMenu';
+import { openHideSidebar } from './sidebar';
 import { changeBgPage } from './changeBgPage';
 import { createFilterTagList } from './createFilterTagList';
 import { sortCards } from './sort/sortCards';
@@ -11,7 +11,7 @@ const paginationBtns = document.querySelectorAll('.js-pagination-arrow');
 
 
 
-modalSortMenu(body);
+openHideSidebar(body);
 createFilterTagList();
 sortCards();
 changeBgPage(body, paginationPages, paginationBtns);
