@@ -11,10 +11,10 @@ const cardsContainer = document.querySelector('.js-cards-container');
 
         ${tags.map((tag) => {
           return `
-            <li class="tags__item tag tag--bg tag--width">
-                <a href="#" class="tags__link">
-                <p class="text text--space">#${tag}</p>
-                </a>
+            <li class="tags__item tag">
+                <button class="tag__btn btn btn--bg-light-white btn--font-tag">
+                  #${tag}
+                </button>
             </li>
           `;
         }).join(``)

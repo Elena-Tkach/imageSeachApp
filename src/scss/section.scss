@@ -144,3 +144,16 @@
   top: -50px;
   right: 0;
 }
+
+.tags {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  @include list-reset;
+}
+
+.tag {
+  flex: 0 1 auto;
+  padding: 5px;
+}
+

@@ -5,7 +5,7 @@ export const cards = [
       title: 'Happy girl',
       likes: 16,
       date: '12/01/22',
-      tags: ['Woman-smile', 'Yellow', 'Woman', 'Smile'],
+      tags: ['Woman-smile-smile-yellow', 'Yellow', 'Woman', 'Smile'],
       author: 'John Doe',
     },
 
