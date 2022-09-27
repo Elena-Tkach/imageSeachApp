@@ -16,20 +16,12 @@
   .cards {
     grid-auto-rows: 50vw;
   }
-
-  .tag--width {
-    max-width: 40%;
-  }
 }
 
 @include mobile-567 {
   .cards {
     grid-auto-rows: 50vw;
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .tag--width {
-    max-width: 100%;
   }
 }
 
@@ -39,11 +31,7 @@
     margin-bottom: 0;
   }
 
-  // .tags {
-  //   flex-wrap: nowrap;
-  // }
-
-  .modal .tags {
+  .sidebar .tags {
     flex-wrap: wrap;
   }
 
@@ -51,15 +39,11 @@
     @include font($size: 16px);
   }
 
-  .tag--width {
-    max-width: 30%;
-  }
-
   .arrows {
     width: 50%;
   }
 
-  .modal {
+  .sidebar {
     width: 50%;
     height: 100%;
     padding: 100px 20px 50px 40px;
@@ -98,7 +82,7 @@
     width: 30%;
   }
 
-  .modal {
+  .sidebar {
     width: 30%;
   }
 

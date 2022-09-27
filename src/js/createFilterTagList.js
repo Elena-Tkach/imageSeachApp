@@ -7,10 +7,10 @@ export const createFilterTagList = () => {
 
 	containerTagList.innerHTML = tagList.map(tag => {
 		return `
-			<li class="tags__item tag tag--border-yellow">
-                <a href="#" class="tags__link">
-                    <p class="text text--black text--space">${tag}</p>
-                </a>
+			<li class="tags__item tag">
+                <button class="tag__btn btn btn--border-yellow btn--color-black btn--font-tag">
+                   ${tag}
+                </button>
             </li>
 		`;
 

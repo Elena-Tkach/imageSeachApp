@@ -31,20 +31,7 @@ p {
   margin: 0;
 }
 
-.text {
-  @include font($size: 14px);
-  transition: $transition-06;
 
-  &--black {
-    color: $black;
-  }
-
-  &--space {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
 
 .input {
   border: none;
@@ -93,6 +80,36 @@ p {
     }
   }
 
+  &--bg-light-white {
+    padding: 5px;
+    color: $white;
+    background: $light-white;
+
+    &:hover,
+    &:focus {
+      color: $yellow;
+    }
+  }
+
+  &--color-black {
+    color: $black;
+  }
+
+  &--color-yellow {
+     color: $yellow;
+  }
+
+  &--border-yellow {
+    padding: 5px;
+   
+    box-shadow: $box-border-yellow;
+
+    &:hover,
+    &:focus {
+      color: $yellow;
+    }
+  }
+
   &--border-yellow-h {
     padding: 5px 8px;
     &:hover,
@@ -105,9 +122,14 @@ p {
   &--font {
     @include font($size: 16px);
   }
+
+  &--font-tag {
+    @include font($size: 14px);
+    transition: $transition-06;
+  }
 }
 
-.btn-open-sort {
+.btn-open-sidebar {
   width: 50px;
   height: 50px;
   background: url("img/filter.png") no-repeat center;
@@ -120,7 +142,7 @@ p {
   }
 }
 
-.btn-close-sort {
+.btn-close-sidebar {
   background: url("img/close.png") no-repeat center;
   width: 50px;
   height: 50px;

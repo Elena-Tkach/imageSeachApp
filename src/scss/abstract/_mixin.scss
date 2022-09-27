@@ -13,13 +13,15 @@
 @mixin bg-overlay-gradient(
     $color: rgba(0, 0, 0, 0.167),
     $deg: 0,
-    $color-first: rgba(0, 0, 0, 0.8),
+    $color-first: rgba(0, 0, 0, 0.6),
     $percent-first: 0%,
-    $color-second: rgba(0, 212, 255, 0),
+    $color-middle: rgba(0, 0, 0, 0.4),
+    $percent-middle: 40%,
+    $color-second: rgba(0, 0, 0, 0.6),
     $percent-second: 100%
 ) {
     background: $color;
-    background: linear-gradient($deg, $color-first $percent-first, $color-second $percent-second);
+    background: linear-gradient($deg, $color-first $percent-first, $color-middle $percent-middle, $color-second $percent-second);
 }
 
 @mixin font($weight: 300, $size: 18px, $family: sans-serif) {
