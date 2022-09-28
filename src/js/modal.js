@@ -12,7 +12,8 @@ export const onShowContainer = (container, body, overlay, btnClose) => {
     }, 100);
 
     document.addEventListener('keydown', onPressEscKeydown);
-  }
+  };
+
 
 export const onHideContainer = (container, body, overlay) => {
     container.classList.remove('open');
@@ -23,10 +24,13 @@ export const onHideContainer = (container, body, overlay) => {
 
      document.removeEventListener('keydown', onPressEscKeydown);
     
-  }
+  };
 
   const onPressEscKeydown = (el) => {
     if (el.code === `Escape`) {
       onHideContainer();
     }
   };
+
+
+  

@@ -1,5 +1,5 @@
 import { cards } from '../consts';
-import { createCard } from '../createСard';
+import { renderCardsList } from '../cards/renderCardsList';
 
 export const sortCards = () => {
 	const btnSortDateUp = document.querySelector('.js-sort-date-up');
@@ -39,7 +39,7 @@ export const sortCards = () => {
 
 	
 
-	createCard();
+	renderCardsList();
 
 	btnSortDateUp.addEventListener('click', () => {
 		cards.sort(sortDateUp);
