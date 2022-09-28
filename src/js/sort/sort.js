@@ -1,4 +1,4 @@
-import { cards } from '../createArray';
+import { cards } from '../consts';
 import { createCard } from '../createСard';
 
 export const sortCards = () => {
@@ -36,6 +36,8 @@ export const sortCards = () => {
 	    if (sortA > sortB) return 1;
 	    return 0;
 	}
+
+	
 
 	createCard();
 

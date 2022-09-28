@@ -1,46 +1,60 @@
+import {onShowContainer, onHideContainer}  from './modal';
+
 export const openHideSidebar = (body) => {
   const btnOpenSidebarEl = document.querySelector('.js-btn-open-sidebar');
   const btnCloseSidebarEl = document.querySelector('.js-btn-close-sidebar');
   
   const sidebarEl = document.querySelector('.js-sidebar');
   const overlayEl = document.querySelector('.js-overlay');
-  let previousActiveElement;
+
+  btnOpenSidebarEl.addEventListener('click', () => {
+    onShowContainer(sidebarEl, body, overlayEl,  btnCloseSidebarEl);
+  });
+
+  btnCloseSidebarEl.addEventListener('click', () => {
+    onHideContainer(sidebarEl, body, overlayEl );
+  });
+
+  overlayEl.addEventListener('click', () => {
+
+    onHideContainer( sidebarEl, body,  overlayEl);
+  });
 
 
-  const onShowBlock = () => {
-    sidebarEl.classList.add('open');
-    overlayEl.classList.add('open');
-    body.classList.add('no-scroll');
+  // let previousActiveElement;
 
-    previousActiveElement = document.activeElement;
 
-    setTimeout(() => {
-      btnCloseSidebarEl.focus();
-    }, 100);
+  // const onShowBlock = () => {
+  //   sidebarEl.classList.add('open');
+  //   overlayEl.classList.add('open');
+  //   body.classList.add('no-scroll');
 
-    document.addEventListener('keydown', onPressEscKeydown);
-  }
+  //   previousActiveElement = document.activeElement;
 
-  const onHideBlock = () => {
-    sidebarEl.classList.remove('open');
-    overlayEl.classList.remove('open');
-    body.classList.remove('no-scroll');
+  //   setTimeout(() => {
+  //     btnCloseSidebarEl.focus();
+  //   }, 100);
 
-    previousActiveElement.focus();
+  //   document.addEventListener('keydown', onPressEscKeydown);
+  // }
 
-    document.removeEventListener('keydown', onPressEscKeydown);
-  }
+  // const onHideBlock = () => {
+  //   sidebarEl.classList.remove('open');
+  //   overlayEl.classList.remove('open');
+  //   body.classList.remove('no-scroll');
 
-  const onPressEscKeydown = (el) => {
-    if (el.code === `Escape`) {
-      onHideBlock();
-    }
-  };
+  //   previousActiveElement.focus();
 
-  btnOpenSidebarEl.addEventListener('click', onShowBlock);
-  btnCloseSidebarEl.addEventListener('click', onHideBlock);
-  overlayEl.addEventListener('click', onHideBlock);
+  //   document.removeEventListener('keydown', onPressEscKeydown);
+  // }
 
+  // const onPressEscKeydown = (el) => {
+  //   if (el.code === `Escape`) {
+  //     onHideBlock();
+  //   }
+  // };
+
+  
 
 }
 
