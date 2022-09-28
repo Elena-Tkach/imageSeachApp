@@ -1,4 +1,4 @@
-import { cards } from '../createArray';
+import { cards } from '../consts';
 import { createCard } from '../createСard';
 
 export const sortCards = () => {

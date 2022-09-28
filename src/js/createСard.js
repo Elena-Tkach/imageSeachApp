@@ -1,4 +1,4 @@
-import { cards } from './createArray';
+import { cards } from './consts';
 
 export const createCard = () => {
 const cardsContainer = document.querySelector('.js-cards-container');

@@ -1,4 +1,4 @@
-import { cards } from './createArray';
+// import { cards } from './createArray';
 
 export const createCard2 = (cardsContainer) => {
 
