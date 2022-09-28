@@ -71,4 +71,7 @@ export const cards = [
       tags: ['Car', 'Yellow-car', 'Yellow'],
       author: 'Charlotte Ganzales',
     },
-]
+];
+
+export const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da'];
+  
