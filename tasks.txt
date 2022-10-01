@@ -10,9 +10,13 @@ FIX
 
 - Файл sort.js c модулем sortCards
 - Файл filter.js  в нем модуль getFilterTegs
+<<<<<<< Updated upstream
 
 -! Файл modal.js  в нем методы: (onModalShow, onModalHide, onPressEscKeydown ) - это все должно работать для любой модалки
 - Доделать закрытие модального окна при нажатии на esc
+=======
+-! Файл modal.js  в нем методы: (onModalShow, onModalHide, onPressEscKeydown ) - это все должно работать для любой модалки
+>>>>>>> Stashed changes
 
 - Файл cards.js  в нем метод createCard(). Берем мэп и применяю к нему функцию createCard(); 
 - Создать функцию renderCardsList() и использовать ее вместо createCard для вставки листа карточек на страницу
