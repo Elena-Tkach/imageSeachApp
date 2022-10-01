@@ -26,6 +26,9 @@ export const onHideContainer = (container, body, overlay) => {
     
   };
 
+  // в onHideContainer необходимо передать переменные, но при передаче 
+  // выдает ошибку: что не возможно найти (el); 
+  // Не знаю: как исправить это. :(
   const onPressEscKeydown = (el) => {
     if (el.code === `Escape`) {
       onHideContainer();
