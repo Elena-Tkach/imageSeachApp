@@ -1,10 +1,10 @@
 export const createTag = (tag) => {
-		return `
+   return `
 			<li class="tags__item tag">
-                <button class="tag__btn btn btn--border-yellow btn--color-black btn--font-tag">
+                <button class="tag__btn btn btn--border-yellow btn--color-black btn--font-tag" value="${tag}">
                    ${tag}
                 </button>
             </li>
 		`;
-	
+
 };

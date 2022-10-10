@@ -7,20 +7,20 @@ export const createCard = (card) => {
        <ul class="info__tags tags js-tags">
 
         ${tags.map((tag) => {
-          return `
+      return `
             <li class="tags__item tag">
-                <button class="tag__btn btn btn--bg-light-white btn--font-tag">
+                <button class="tag__btn btn btn--bg-light-white btn--font-tag" value="${tag}">
                   #${tag}
                 </button>
             </li>
           `;
-        }).join(``)
+    }).join(``)
       }
       </ul>
     `;
   };
 
-  const  cardCreate = () => {
+  const cardCreate = () => {
     return ` 
         <li class="cards__item card">
           <figure class="card__content">
