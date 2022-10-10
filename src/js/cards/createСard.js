@@ -22,9 +22,9 @@ export const createCard = (card) => {
 
   const cardCreate = () => {
     return ` 
-        <li class="cards__item card">
+        <li class="cards__item card js-card">
           <figure class="card__content">
-              <img class="card__img" src="${card.imageLink}" alt="${card.alt}">
+              <img class="card__img" src="${card.imageLink}" alt="${card.title}">
 
               <figcaption class="card__info info">
                   <div class="info__header">

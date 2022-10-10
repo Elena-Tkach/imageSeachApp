@@ -1,9 +1,9 @@
 'use strict;'
-import { openHideSidebar } from './sidebar';
 import { pagination } from './pagination';
 import { renderTagsList } from './tags/renderTagsList';
 import { renderCardsList } from './cards/renderCardsList';
 import { sortCards } from './sort';
+import { openHideSidebar } from './sidebar';
 
 
 const body = document.body;

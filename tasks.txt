@@ -8,8 +8,8 @@ FIX
 + Переместить массив с цветами из pagination.js в consts.js 
 + Переместить классы пагинации из index.js  в pagination.js
 
-- Файл sort.js c модулем sortCards
-- Файл filter.js  в нем модуль getFilterTegs
++ Файл sort.js c модулем sortCards
+- Файл filter.js  в нем модуль getFilterTags
 <<<<<<< Updated upstream
 
 -! Файл modal.js  в нем методы: (onModalShow, onModalHide, onPressEscKeydown )  это все должно работать для любой модалки

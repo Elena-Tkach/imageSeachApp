@@ -12,10 +12,12 @@ export const renderTagsList = () => {
 
 	}).join('');
 
+	
 	//Фильтрация по тегам при клике на список тегов
 	containerTagList.addEventListener('click', event => {
-		if (event.target.classList.contains('tag__btn')) {
-			const target = event.target;
+		const target = event.target;
+
+		if (target.classList.contains('tag__btn')) {
 
 			console.log(target.value);
 
