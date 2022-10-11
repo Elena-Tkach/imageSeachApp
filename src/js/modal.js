@@ -1,8 +1,8 @@
   let previousActiveElement;
 
 export const onShowContainer = (container, body, overlay, btnClose) => {
-    container.classList.add('open');
-    overlay.classList.add('open');
+    container.classList.add('js-visible');
+    overlay.classList.add('js-visible');
     body.classList.add('no-scroll');
 
     previousActiveElement = document.activeElement;
@@ -16,8 +16,8 @@ export const onShowContainer = (container, body, overlay, btnClose) => {
 
 
 export const onHideContainer = (container, body, overlay) => {
-    container.classList.remove('open');
-    overlay.classList.remove('open');
+    container.classList.remove('js-visible');
+    overlay.classList.remove('js-visible');
     body.classList.remove('no-scroll');
 
     previousActiveElement.focus();
