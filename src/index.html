@@ -34,7 +34,7 @@
 
                 <ul class="app__list cards  js-cards-container"></ul>
 
-                 <template id="js-tmpl-card">
+                <template id="js-tmpl-card">
                     <li class="cards__item card">
                         <figure class="card__content">
                             <img class="card__img js-tmpl-img"
@@ -59,7 +59,8 @@
                                         by
                                         <span class="author__name js-tmpl-author">John Doe</span>
                                     </p>
-                                    <h2 class="info__title title title--second title--yellow js-tmpl-title">Happy girl</h2>
+                                    <h2 class="info__title title title--second title--yellow js-tmpl-title">Happy girl
+                                    </h2>
                                 </div>
 
                                 <ul class="info__tags tags js-tmpl-tags">
@@ -116,7 +117,8 @@
     </main>
 
     <div class="sidebar js-sidebar" aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
-        <button class="sidebar__close btn btn__close btn-close-sidebar js-btn-close-sidebar" aria-label="Закрыть модальное окно"></button>
+        <button class="sidebar__close btn btn--close js-btn-close-sidebar"
+            aria-label="Закрыть меню сортировки"></button>
 
         <div class="sidebar__sort sort">
             <h3 class="sort__title title title--third">Cортировать:</h3>
@@ -139,11 +141,17 @@
             <h3 class="sort__title title title--third">Фильтр по тегам:</h3>
 
             <ul class="filter__tags tags js-tag-list">
-               
+
             </ul>
         </div>
     </div>
 
+    <div class="modal js-modal">
+        <button class="sidebar__close btn  btn--close-modal  js-btn-close-modal" aria-label="Закрыть модальное окно">
+        </button>
+
+        <div class="modal__content js-modal-content"></div>
+    </div>
     <div class="overlay js-overlay"></div>
 </body>
 

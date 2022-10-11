@@ -21,7 +21,12 @@
     $percent-second: 100%
 ) {
     background: $color;
-    background: linear-gradient($deg, $color-first $percent-first, $color-middle $percent-middle, $color-second $percent-second);
+    background: linear-gradient(
+        $deg,
+        $color-first $percent-first,
+        $color-middle $percent-middle,
+        $color-second $percent-second
+    );
 }
 
 @mixin font($weight: 300, $size: 18px, $family: sans-serif) {
