@@ -158,8 +158,8 @@ p {
 .btn--close-modal {
   z-index: 11;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 1%;
+  right: 1%;
   background: url("img/close-white.png") no-repeat center;
 
   width: 50px;
@@ -168,6 +168,7 @@ p {
 
   &:hover,
   &:focus {
-    background: url("img/close-white.png") no-repeat center $skyblue;
+    @include box-shadow($x: 0, $y: 0, $blur: 0, $spread: 2px, $color: $white);
+    background: url("img/close-white.png") no-repeat center;
   }
 }
