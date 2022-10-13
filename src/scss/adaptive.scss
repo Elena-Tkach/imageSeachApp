@@ -49,11 +49,22 @@
     padding: 100px 20px 50px 40px;
   }
 
-  .btn--close-modal {
-    top: 0;
-    right: 0;
-    transform: translate(70%, -65%);
+  .modal {
+    z-index: 10;
+    position: fixed;
+    top: 3%;
+    bottom: 3%;
+    padding: 2% 12%;
   }
+
+  .modal__img {
+    height: 80%;
+  }
+  // .btn--close-modal {
+  //   top: 4%;
+  //   right: 4%;
+  //   transform: translate(70%, -65%);
+  // }
 }
 
 @include tablet-992 {
