@@ -5,9 +5,6 @@ export const openHideSidebar = (body, overlay) => {
   const btnCloseSidebarEl = document.querySelector('.js-btn-close-sidebar');
   const sidebarEl = document.querySelector('.js-sidebar');
 
-
-
-
   btnOpenSidebarEl.addEventListener('click', () => {
     onShowContainer(sidebarEl, body, overlay, btnCloseSidebarEl);
   });
@@ -19,9 +16,6 @@ export const openHideSidebar = (body, overlay) => {
   overlay.addEventListener('click', () => {
     onHideContainer(sidebarEl, body, overlay);
   });
-
- 
-
 
 };
 

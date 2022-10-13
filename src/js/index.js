@@ -4,7 +4,7 @@ import { renderTagsList } from './tags/renderTagsList';
 import { renderCardsList } from './cards/renderCardsList';
 import { sortCards } from './sort';
 import { openHideSidebar } from './sidebar';
-import { openCloseImg } from './openImg';
+import { onClickCardLargeSize } from './largeCard';
 
 
 const body = document.body;
@@ -15,7 +15,7 @@ renderCardsList();
 renderTagsList();
 sortCards();
 openHideSidebar(body, overlayEl);
-openCloseImg(body, overlayEl);
+onClickCardLargeSize(body, overlayEl);
 pagination(body);
 
 
