@@ -9,7 +9,7 @@ export const createCard = (card) => {
         ${tags.map((tag) => {
       return `
             <li class="tags__item tag">
-                <button class="tag__btn btn btn--bg-light-white btn--font-tag" value="${tag}">
+                <button class="tag__btn btn btn--bg-light-white btn--font-tag js-btn-tag" value="${tag}">
                   #${tag}
                 </button>
             </li>
