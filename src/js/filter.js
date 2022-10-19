@@ -6,23 +6,21 @@ export const filterTags = (cards) => {
 
   const filterTagsOnPage = (target) => {
     return cards.filter(({ tags: arr }) => arr.some(tag => target.value.includes(tag)));
-  }
+  };
 
-  //doesn't work
+
   tagListCard.forEach(list => {
-    list.addEventListener('click', event => {
+    list.addEventListener('click', (event) => {
       const target = event.target;
       const result = filterTagsOnPage(target);
-      console.log(target)
 
-      // if (target.classList.contains('tag__btn')) {
-      //   //Выполняется один раз !!!!PROBLEM
-      //   if (result) { return renderCardsList(result) };
-      //   if (!result) return console.log('fail');
-      // }
+      if (target.classList.contains('tag__btn')) {
+        console.log(result)
+        if (result) { renderCardsList(result) };
+      }
 
     })
-  });
+  })
 
 
   containerTagList.addEventListener('click', event => {
