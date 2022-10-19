@@ -1,7 +1,5 @@
 import { getSortTags } from './tags';
 import { createTag } from './createTag';
-import { cards } from '../consts';
-import { renderCardsList } from '../cards/renderCardsList';
 
 export const renderTagsList = () => {
 	const containerTagList = document.querySelector('.js-tag-list');
@@ -11,28 +9,5 @@ export const renderTagsList = () => {
 		return createTag(tag);
 
 	}).join('');
-
-	
-	//Фильтрация по тегам при клике на список тегов
-	containerTagList.addEventListener('click', event => {
-		const target = event.target;
-
-		if (target.classList.contains('tag__btn')) {
-
-			console.log(target.value);
-
-			const tagsCard = cards.map(card => {
-				card.tags.filter(tag => {
-					console.log(tag);
-					tag === target.value
-				})
-			});
-
-			if (tagsCard) return renderCardsList();
-			if (!tagsCard) return console.log('zero');
-		}
-
-	});
-
 
 };
