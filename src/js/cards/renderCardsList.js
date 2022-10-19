@@ -1,4 +1,3 @@
-// import { cards } from '../consts';
 import { createCard } from './createСard';
 
 export const renderCardsList = (cards) => {
