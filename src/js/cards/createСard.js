@@ -5,8 +5,8 @@ export const createCard = (card) => {
   const strUpperFirst = (str) => {
     if (!str) return;
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
-
   }
+  
   const tags = (tags) => {
     return `
        <ul class="info__tags tags js-tags">

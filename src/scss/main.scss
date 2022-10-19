@@ -128,6 +128,7 @@ p {
 }
 
 .btn-open-sidebar {
+  z-index: 8;
   width: 50px;
   height: 50px;
   background: url("img/filter.png") no-repeat center;
