@@ -2,7 +2,7 @@ export const cards = [
 
   {
     imageLink: 'https://images.unsplash.com/photo-1662511024026-bc935d6d7962?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60',
-    title: ('happy girl'),
+    title: 'happy girl',
     likes: 16,
     date: '12/01/22',
     tags: ['Woman-smile-smile-yellow', 'Yellow', 'Woman', 'Smile'],
