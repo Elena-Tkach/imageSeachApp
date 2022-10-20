@@ -32,7 +32,7 @@ export const cards = [
     title: 'orange eyes',
     likes: 123,
     date: '05/08/22',
-    tags: ['Fruit', 'Orange', 'Woman'],
+    tags: ['Fruit', 'Orange', 'Woman', 'Happy'],
     author: 'Aiden Martin',
   },
 
@@ -41,7 +41,7 @@ export const cards = [
     title: 'Singing on the stairs',
     likes: 154,
     date: '12/12/21',
-    tags: ['Yellow', 'Blue', 'Man-sings', 'Guitar', 'Guitar',],
+    tags: ['Yellow', 'Blue', 'Man-sings', 'Guitar'],
     author: 'Owen Jackson',
   },
 
