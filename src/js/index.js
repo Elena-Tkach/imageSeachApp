@@ -1,12 +1,12 @@
 'use strict;'
-import { cards } from './consts';
-import { pagination } from './pagination';
-import { renderTagsList } from './tags/renderTagsList';
-import { renderCardsList } from './cards/renderCardsList';
-import { sortCards } from './sort';
-import { filterTags } from './filter';
-import { openHideSidebar } from './sidebar';
-import { onClickCardLargeSize } from './largeCard';
+import { cards, colors } from './consts';
+import { pagination } from './main/pagination';
+import { renderTagsList } from './app/tags/renderTagsList';
+import { renderCardsList } from './app/cards/renderCardsList';
+import { sortCards } from './app/sort';
+import { filterTags } from './app/filter';
+import { openHideSidebar } from './main/sidebar';
+import { onClickCardLargeSize } from './main/largeCard';
 
 
 const body = document.body;
@@ -14,13 +14,13 @@ const overlayEl = document.querySelector('.js-overlay');
 
 
 
-renderCardsList(cards);
-renderTagsList();
-sortCards();
-filterTags(cards);
 openHideSidebar(body, overlayEl);
 onClickCardLargeSize(body, overlayEl);
-pagination(body);
+pagination(body, colors);
+renderCardsList(cards);
+renderTagsList(cards);
+filterTags(cards);
+sortCards(cards);
 
 
 

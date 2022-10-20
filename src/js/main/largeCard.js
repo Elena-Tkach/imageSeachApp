@@ -1,5 +1,5 @@
 import { onShowContainer, onHideContainer } from './modal';
-import { cloneCardToModal, clearCardModal } from './cards/cloneCard';
+import { cloneCardToModal, clearCardModal } from '../app/cards/cloneCard';
 
 export const onClickCardLargeSize = (body, overlay) => {
   const cardsContainer = document.querySelector('.js-cards-container');

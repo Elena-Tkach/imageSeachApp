@@ -1,6 +1,6 @@
-import { colors } from './consts';
+import { colors } from '../consts';
 
-export const  pagination = (body) => {
+export const pagination = (body, colors) => {
   const paginationPages = document.querySelectorAll('.js-page-btn');
   const paginationBtns = document.querySelectorAll('.js-pagination');
 

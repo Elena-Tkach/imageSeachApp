@@ -1,6 +1,4 @@
-import { cards } from '../consts';
-
-export const getSortTags = () => {
+export const getSortTags = (cards) => {
 	let tags = [];
 
 	cards.map(card => {
