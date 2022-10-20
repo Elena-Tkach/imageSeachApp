@@ -6,7 +6,7 @@ export const createCard = (card) => {
     if (!str) return;
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
   }
-  
+
   const tags = (tags) => {
     return `
        <ul class="info__tags tags js-tags">
@@ -27,7 +27,7 @@ export const createCard = (card) => {
 
   const cardCreate = () => {
     return ` 
-        <li class="cards__item card js-card">
+        <li class="cards__item card js-card" tabindex="1">
           <figure class="card__content">
               <img class="card__img" src="${card.imageLink}" alt="${card.title}">
 

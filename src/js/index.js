@@ -8,11 +8,8 @@ import { filterTags } from './app/filter';
 import { openHideSidebar } from './main/sidebar';
 import { onClickCardLargeSize } from './main/largeCard';
 
-
 const body = document.body;
 const overlayEl = document.querySelector('.js-overlay');
-
-
 
 openHideSidebar(body, overlayEl);
 onClickCardLargeSize(body, overlayEl);
