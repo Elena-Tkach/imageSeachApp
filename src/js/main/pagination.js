@@ -1,6 +1,5 @@
-import { colors } from '../consts';
 
-export const pagination = (body, colors) => {
+export const pagination = (colors) => {
   const paginationPages = document.querySelectorAll('.js-page-btn');
   const paginationBtns = document.querySelectorAll('.js-pagination');
 
@@ -21,7 +20,7 @@ export const pagination = (body, colors) => {
   }
 
   const changeColorBodyBg = () => {
-    body.style.background = colors[Math.floor(Math.random()
+    document.body.style.background = colors[Math.floor(Math.random()
       * colors.length)];
   }
 

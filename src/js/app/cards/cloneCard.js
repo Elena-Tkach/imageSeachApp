@@ -1,5 +1,6 @@
 export const cloneCardToModal = (target, title, img, box) => {
   const targetParent = target.parentElement;
+  
   const targetParentTags = targetParent.lastElementChild.lastElementChild;
   const targetParentTitle = targetParent.lastElementChild.childNodes[3].lastElementChild;
   const targetParentAuthors = targetParent.lastElementChild.childNodes[3].firstElementChild;

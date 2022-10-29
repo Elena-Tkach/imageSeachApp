@@ -1,9 +1,10 @@
 let previousActiveElement;
+const overlayEl = document.querySelector('.js-overlay');
 
-export const onShowContainer = (container, body, overlay, btnClose) => {
+export const onShowContainer = (container, btnClose) => {
   container.classList.add('js-visible');
-  overlay.classList.add('js-visible');
-  body.classList.add('no-scroll');
+  overlayEl.classList.add('js-visible');
+  document.body.classList.add('no-scroll');
 
   previousActiveElement = document.activeElement;
 
@@ -11,28 +12,14 @@ export const onShowContainer = (container, body, overlay, btnClose) => {
     btnClose.focus();
   }, 100);
 
-  document.addEventListener('keydown', onPressEscKeydown);
 };
 
-
-export const onHideContainer = (container, body, overlay) => {
+export const onHideContainer = (container) => {
   container.classList.remove('js-visible');
-  overlay.classList.remove('js-visible');
-  body.classList.remove('no-scroll');
-
+  overlayEl.classList.remove('js-visible');
+  document.body.classList.remove('no-scroll');
   previousActiveElement.focus();
 
-  document.removeEventListener('keydown', onPressEscKeydown);
-
-};
-
-// в onHideContainer необходимо передать переменные, но при передаче 
-// выдает ошибку: что не возможно найти (el); 
-// Не знаю: как исправить это. :(
-const onPressEscKeydown = (el) => {
-  if (el.code === `Escape`) {
-    onHideContainer();
-  }
 };
 
 
