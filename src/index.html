@@ -64,8 +64,7 @@
     </main>
 
     <div class="sidebar js-sidebar" aria-label="Фильтр и сортировка" aria-modal="true" role="dialog">
-        <button class="sidebar__close btn btn--close js-btn-close-sidebar"
-            aria-label="Закрыть меню сортировки"></button>
+        <button class="sidebar__close btn btn--close js-btn-close" aria-label="Закрыть меню сортировки"></button>
 
         <div class="sidebar__sort sort">
             <h3 class="sort__title title title--third">Cортировать:</h3>
@@ -94,6 +93,17 @@
     </div>
 
     <div class="modal js-modal" aria-label="Увеличенное изображение" aria-modal="true" role="dialog">
+        <button class="sidebar__close btn  btn--close-modal  js-btn-close" aria-label="Закрыть модальное окно">
+        </button>
+        <figure class="modal__content">
+                <h4 class="modal__title title js-modal-title"></h4>
+                <div class="modal__img js-modal-img"></div>
+                <div class="modal__body js-modal-body"></div>   
+        </figure>
+
+    </div>
+
+    <!-- <div class="modal js-modal" aria-label="Увеличенное изображение" aria-modal="true" role="dialog">
         <button class="sidebar__close btn  btn--close-modal  js-btn-close-modal" aria-label="Закрыть модальное окно">
         </button>
         <div class="modal__content">
@@ -101,7 +111,7 @@
             <div class="modal__img js-modal-img"></div>
             <div class="modal__body js-modal-body"></div>
         </div>
-    </div>
+    </div> -->
 
     <div class="overlay js-overlay"></div>
 </body>

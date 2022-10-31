@@ -2,18 +2,20 @@ import { onShowContainer, onHideContainer } from '../app/modal';
 
 export const openHideSidebar = () => {
   const btnOpenSidebarEl = document.querySelector('.js-btn-open-sidebar');
-  const btnCloseSidebarEl = document.querySelector('.js-btn-close-sidebar');
   const sidebarEl = document.querySelector('.js-sidebar');
   const overlayEl = document.querySelector('.js-overlay');
 
 
   btnOpenSidebarEl.addEventListener('click', () => {
-    onShowContainer(sidebarEl, btnCloseSidebarEl);
+    onShowContainer(sidebarEl);
   });
 
-  btnCloseSidebarEl.addEventListener('click', () => {
-    onHideContainer(sidebarEl);
-  });
+  sidebarEl.addEventListener('click', event => {
+    if (event.target.classList.contains('js-btn-close')) {
+      onHideContainer(sidebarEl);
+    }
+
+  })
 
   overlayEl.addEventListener('click', () => {
     onHideContainer(sidebarEl);
