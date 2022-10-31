@@ -1,7 +1,8 @@
 let previousActiveElement;
 const overlayEl = document.querySelector('.js-overlay');
+const btnClose = document.querySelector('.js-btn-close');
 
-export const onShowContainer = (container, btnClose) => {
+export const onShowContainer = (container) => {
   container.classList.add('js-visible');
   overlayEl.classList.add('js-visible');
   document.body.classList.add('no-scroll');

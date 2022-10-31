@@ -1,25 +1,24 @@
 export const cloneCardToModal = (target, title, img, box) => {
-  const targetParent = target.parentElement;
-  
-  const targetParentTags = targetParent.lastElementChild.lastElementChild;
-  const targetParentTitle = targetParent.lastElementChild.childNodes[3].lastElementChild;
-  const targetParentAuthors = targetParent.lastElementChild.childNodes[3].firstElementChild;
-  const targetParentLikes = targetParent.lastElementChild.childNodes[1].firstElementChild;
+  const targetParent = target.closest('.card__content');
+  const targetLikes = targetParent.querySelector('.rating');
+  const targetTitle = targetParent.querySelector('.info__title');
+  const targetTags = targetParent.querySelector('.js-tags');
+  const targetAuthor = targetParent.querySelector('.author');
+
 
   const cloneImg = target.cloneNode(true);
-  const cloneTargetTags = targetParentTags.cloneNode(true);
-  const cloneTargetTitle = targetParentTitle.cloneNode(true);
-  const cloneTargetLikes = targetParentLikes.cloneNode(true);
-  const cloeTargetAuthors = targetParentAuthors.cloneNode(true);
+  const cloneTargetTags = targetTags.cloneNode(true);
+  const cloneTargetTitle = targetTitle.cloneNode(true);
+  const cloneTargetLikes = targetLikes.cloneNode(true);
+  const clonTargetAuthor = targetAuthor.cloneNode(true);
 
   const appentContentCard = () => {
-    title.append(cloneTargetTitle);
+    title.appendChild(cloneTargetTitle);
     img.append(cloneImg);
     box.append(cloneTargetLikes);
-    box.append(cloeTargetAuthors);
+    box.append(clonTargetAuthor);
     box.append(cloneTargetTags);
   }
-
   return appentContentCard();
 
 }
