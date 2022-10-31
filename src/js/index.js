@@ -4,7 +4,7 @@ import { pagination } from './main/pagination';
 import { renderTagsList } from './app/tags/renderTagsList';
 import { renderCardsList } from './app/cards/renderCardsList';
 import { sortCards } from './app/sort';
-import { filterTags } from './app/filter';
+import { filterOnPage } from './main/filterOnPage';
 import { openHideSidebar } from './main/sidebar';
 import { onClickCardLargeSize } from './main/largeCard';
 
@@ -14,7 +14,7 @@ onClickCardLargeSize();
 pagination(colors);
 renderCardsList(cards);
 renderTagsList(cards);
-filterTags(cards);
+filterOnPage(cards);
 sortCards(cards);
 
 
