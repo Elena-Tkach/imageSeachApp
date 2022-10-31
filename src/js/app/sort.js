@@ -1,6 +1,7 @@
 
 import { renderCardsList } from './cards/renderCardsList';
 
+
 export const sortCards = (cards) => {
 	const btnSortDateUp = document.querySelector('.js-sort-date-up');
 	const btnSortDateDown = document.querySelector('.js-sort-date-down');

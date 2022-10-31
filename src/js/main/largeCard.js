@@ -1,4 +1,4 @@
-import { onShowContainer, onHideContainer } from './modal';
+import { onShowContainer, onHideContainer } from '../app/modal';
 import { cloneCardToModal, clearCardModal } from '../app/cards/cloneCard';
 
 export const onClickCardLargeSize = () => {

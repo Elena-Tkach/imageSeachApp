@@ -1,4 +1,4 @@
-import { onShowContainer, onHideContainer } from './modal';
+import { onShowContainer, onHideContainer } from '../app/modal';
 
 export const openHideSidebar = () => {
   const btnOpenSidebarEl = document.querySelector('.js-btn-open-sidebar');
