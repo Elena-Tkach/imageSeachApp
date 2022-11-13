@@ -1,6 +1,6 @@
 'use strict;'
 import { cards, colors } from './consts';
-import { pagination } from './main/pagination';
+import { renderColorPaginationAndPage } from './main/pagination';
 import { renderTagsList } from './app/tags/renderTagsList';
 import { renderCardsList } from './app/cards/renderCardsList';
 import { sortCards } from './app/sort';
@@ -11,7 +11,7 @@ import { onClickCardLargeSize } from './main/largeCard';
 
 openHideSidebar();
 onClickCardLargeSize();
-pagination(colors);
+renderColorPaginationAndPage();
 renderCardsList(cards);
 renderTagsList(cards);
 filterOnPage(cards);

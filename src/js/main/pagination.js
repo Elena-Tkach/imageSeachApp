@@ -1,37 +1,39 @@
+import { colors } from '../consts';
 
-export const pagination = (colors) => {
-  const paginationPages = document.querySelectorAll('.js-page-btn');
-  const paginationBtns = document.querySelectorAll('.js-pagination');
-
-  const onShowPagination = (event) => {
-    event.preventDefault();
-    const target = event.target;
-
-    onHidePagination();
-    changeColorBodyBg();
-    target.classList.add('active');
-
-  }
-
-  const onHidePagination = () => {
-    paginationPages.forEach(item => {
-      item.classList.remove('active');
-    })
-  }
+export const renderColorPaginationAndPage = () => {
+  const paginationContainer = document.querySelector('.js-pagination-container');
+  const pageBnts = document.querySelectorAll('.js-page-btn');
 
   const changeColorBodyBg = () => {
-    document.body.style.background = colors[Math.floor(Math.random()
-      * colors.length)];
+    const randomColor = Math.floor(Math.random() * colors.length);
+    document.body.style.background = colors[(randomColor)];
   }
 
-  paginationPages.forEach(item => {
-    item.addEventListener('click', onShowPagination);
+  const addClass = (target) => {
+    target.classList.add('active');
+  }
+
+  const deleteClass = (elements) => {
+    elements.forEach(element => {
+      element.classList.remove('active');
+    })
+  };
+
+
+  paginationContainer.addEventListener('click', (event) => {
+    if (event.target.classList.contains('js-page-arrow')) {
+      changeColorBodyBg();
+      addClass(event.target);
+    }
+
+    if (event.target.classList.contains('js-page-btn')) {
+
+      deleteClass(pageBnts);
+      changeColorBodyBg();
+      addClass(event.target);
+    }
   })
 
-  paginationBtns.forEach(item => {
-    item.addEventListener('click', changeColorBodyBg);
-
-  })
 
 
 

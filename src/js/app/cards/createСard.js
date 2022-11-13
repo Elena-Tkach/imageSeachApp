@@ -2,7 +2,7 @@
 
 export const createCard = (card) => {
 
-  const strUpperFirst = (str) => {
+  const capitalizeFirstLetter = (str) => {
     if (!str) return;
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
   }
@@ -49,7 +49,7 @@ export const createCard = (card) => {
                     by
                         <span class="author__name">${card.author}</span>
                     </p>
-                    <h2 class="info__title title title--second title--yellow">${strUpperFirst(card.title)}</h2>
+                    <h2 class="info__title title title--second title--yellow">${capitalizeFirstLetter(card.title)}</h2>
                   </div>  
                   ${tags(card.tags)}
               </figcaption>
