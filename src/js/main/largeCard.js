@@ -1,7 +1,7 @@
 import { onShowContainer, onHideContainer } from '../app/modal';
 import { cloneCardToModal, clearCardModal } from '../app/cards/cloneCard';
 
-export const onClickCardLargeSize = () => {
+export const modalCardHandler = () => {
   const modalEl = document.querySelector('.js-modal');
   const modalTitle = document.querySelector('.js-modal-title');
   const modalImg = document.querySelector('.js-modal-img');

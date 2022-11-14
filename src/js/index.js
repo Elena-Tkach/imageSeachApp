@@ -1,16 +1,16 @@
 'use strict;'
-import { cards, colors } from './consts';
+import { cards } from './consts';
 import { renderColorPaginationAndPage } from './main/pagination';
 import { renderTagsList } from './app/tags/renderTagsList';
 import { renderCardsList } from './app/cards/renderCardsList';
 import { sortCards } from './app/sort';
 import { filterOnPage } from './main/filterOnPage';
-import { openHideSidebar } from './main/sidebar';
-import { onClickCardLargeSize } from './main/largeCard';
+import { sidebarHandler } from './main/sidebar';
+import { modalCardHandler } from './main/largeCard';
 
 
-openHideSidebar();
-onClickCardLargeSize();
+sidebarHandler();
+modalCardHandler();
 renderColorPaginationAndPage();
 renderCardsList(cards);
 renderTagsList(cards);
