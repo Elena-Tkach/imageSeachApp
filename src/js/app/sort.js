@@ -1,46 +1,41 @@
-
+import { cards } from '../consts';
 import { renderCardsList } from './cards/renderCardsList';
 
+export const sortCards = () => {
+	const sortContain = document.querySelector('.js-sort');
+	const cardList = cards;
 
-export const sortCards = (cards) => {
-	const btnSortDateUp = document.querySelector('.js-sort-date-up');
-	const btnSortDateDown = document.querySelector('.js-sort-date-down');
-	const btnSortLikeUp = document.querySelector('.js-sort-like-up');
-	const btnSortLikeDown = document.querySelector('.js-sort-like-down');
+	const sortCards = (target, dataAtribute) => {
+		const data = target.getAttribute(`${dataAtribute}`);
 
-
-	const sortCards = (btn) => {
-		cards.sort((a, b) => {
+		cardList.sort((a, b) => {
 			const dateA = new Date(a.date), dateB = new Date(b.date);
 
-			if (btn === btnSortDateUp) return dateA - dateB;
-			if (btn === btnSortDateDown) return dateB - dateA;
-			if (btn === btnSortLikeUp) return b.likes - a.likes;
-			if (btn === btnSortLikeDown) return a.likes - b.likes;
+			switch (data) {
+				case 'date-up':
+					return dateA - dateB;
+				case 'date-down':
+					return dateB - dateA;
+				case 'like-up':
+					return b.likes - a.likes;
+				case 'like-down':
+					return a.likes - b.likes;
+			};
 		});
 
-		return renderCardsList(cards);
+		return renderCardsList(cardList);
 	};
 
 
-	btnSortDateUp.addEventListener('click', (e) => {
-		sortCards(e.target);
+	sortContain.addEventListener('click', event => {
+		const sortData = event.target.dataset['sort'];
 
-	});
+		if (sortData) {
+			return sortCards(event.target, 'data-sort');
+		}
+		return renderCardsList(cardList);
 
-	btnSortDateDown.addEventListener('click', (e) => {
-		sortCards(e.target);
-	});
-
-	btnSortLikeUp.addEventListener('click', (e) => {
-		sortCards(e.target);
-	});
-
-
-	btnSortLikeDown.addEventListener('click', (e) => {
-		sortCards(e.target);
-	});
-
+	})
 
 };
 
