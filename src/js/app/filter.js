@@ -1,14 +1,23 @@
-// text if nothing is found
-export const appendHtmlText = (block) => {
-  const div = document.createElement('div');
-  div.className = 'nothing-found';
-  div.innerHTML = `Nothing found. Try again`;
-  block.append(div);
+
+export const showErrorText = () => {
+  const error = document.querySelector('.error');
+  error.style.display = "block";
 
   setTimeout(() => {
-    div.remove();
+    error.style.display = "none";
   }, 5000);
 };
+
+export const appendErrorElement = (block, textError) => {
+  const errorHTML = `<div class="error error--color">${textError}</div>`
+  block.insertAdjacentHTML('beforebegin', errorHTML);
+
+  setTimeout(() => {
+    document.querySelector('.error').remove();
+  }, 5000);
+};
+
+
 
 export const filteringCardsByTags = (target, cards) => {
   return cards.filter(({ tags: arr }) => arr.some(tag => target.includes(tag)));
@@ -17,6 +26,8 @@ export const filteringCardsByTags = (target, cards) => {
 export const filteringCardsByIncomingData = (target, search, cards) => {
   return cards.filter(card => (card[search]).toLowerCase().includes(target));
 };
+
+
 
 
 

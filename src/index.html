@@ -26,11 +26,14 @@
                     Поисковик фото
                 </h1>
 
-                <form class="app__search  search js-form-search" action="#">
-                    <input class="search__input input input--yellow input--font" type="search" name="search"
-                        placeholder="Введите тему ..." required>
-                    <button class="search__btn btn btn--yellow btn--font" type="submit">Поиск</button>
-                </form>
+                <div class="app__wrap">
+                    <form class="app__search  search js-form-search" action="#">
+                        <input class="search__input input input--yellow input--font" type="search" name="search"
+                            placeholder="Введите тему ..." required>
+                        <button class="search__btn btn btn--yellow btn--font" type="submit">Поиск</button>
+                    </form>
+                    <div class="error error--color error--none error--pos">Ничего не найдено (CSS)</div>
+                </div>
 
                 <ul class="app__list cards  js-cards-container"></ul>
 
