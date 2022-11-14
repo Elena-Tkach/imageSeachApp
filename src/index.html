@@ -26,18 +26,21 @@
                     Поисковик фото
                 </h1>
 
-                <form class="app__search  search js-form-search" action="#">
-                    <input class="search__input input input--yellow input--font" type="search" name="search"
-                        placeholder="Введите тему ..." required>
-                    <button class="search__btn btn btn--yellow btn--font" type="submit">Поиск</button>
-                </form>
+                <div class="app__wrap">
+                    <form class="app__search  search js-form-search" action="#">
+                        <input class="search__input input input--yellow input--font" type="search" name="search"
+                            placeholder="Введите тему ..." required>
+                        <button class="search__btn btn btn--yellow btn--font" type="submit">Поиск</button>
+                    </form>
+                    <div class="error error--color error--none error--pos">Ничего не найдено (CSS)</div>
+                </div>
 
                 <ul class="app__list cards  js-cards-container"></ul>
 
-                <div class="app__pagination pagination">
+                <div class="app__pagination pagination js-pagination-container">
                     <div class="pagination__arrows arrows">
-                        <button class="arrow arrow--prev btn js-pagination"></button>
-                        <button class="arrow arrow--next btn js-pagination"></button>
+                        <button class="arrow arrow--prev btn js-page-arrow"></button>
+                        <button class="arrow arrow--next btn js-page-arrow"></button>
                     </div>
 
                     <ul class="pagination__pages pages ">
@@ -96,22 +99,12 @@
         <button class="sidebar__close btn  btn--close-modal  js-btn-close" aria-label="Закрыть модальное окно">
         </button>
         <figure class="modal__content">
-                <h4 class="modal__title title js-modal-title"></h4>
-                <div class="modal__img js-modal-img"></div>
-                <div class="modal__body js-modal-body"></div>   
-        </figure>
-
-    </div>
-
-    <!-- <div class="modal js-modal" aria-label="Увеличенное изображение" aria-modal="true" role="dialog">
-        <button class="sidebar__close btn  btn--close-modal  js-btn-close-modal" aria-label="Закрыть модальное окно">
-        </button>
-        <div class="modal__content">
             <h4 class="modal__title title js-modal-title"></h4>
             <div class="modal__img js-modal-img"></div>
             <div class="modal__body js-modal-body"></div>
-        </div>
-    </div> -->
+        </figure>
+
+    </div>
 
     <div class="overlay js-overlay"></div>
 </body>
