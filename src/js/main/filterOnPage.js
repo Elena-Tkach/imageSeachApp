@@ -17,7 +17,6 @@ export const filterByTags = (cards) => {
       if (filterCardsByTags.length === 0) return appendHtmlText(searchForm);
     }
   })
-
 };
 
 export const filterBySearch = (cards) => {
