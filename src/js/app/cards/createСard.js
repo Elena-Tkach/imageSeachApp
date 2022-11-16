@@ -1,4 +1,4 @@
-import { createTagInCard } from '../tags/createTag';
+import { createTag } from '../tags/createTag';
 
 export const createCard = (link, likes, date, author, tag, title) => {
 
@@ -16,9 +16,8 @@ export const createCard = (link, likes, date, author, tag, title) => {
   const cardAuthor = cloneCardTemplate.querySelector('.js-card-author');
   const cardTagsList = cloneCardTemplate.querySelector('.js-card-tags');
 
-
   tag.forEach(tagItem => {
-    const tag = createTagInCard(tagItem);
+    const tag = createTag(tagItem, 'btn--bg-light-white');
     cardTagsList.append(tag);
   });
 
