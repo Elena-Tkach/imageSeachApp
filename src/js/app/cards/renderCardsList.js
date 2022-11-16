@@ -4,7 +4,6 @@ import { createCard } from './createСard';
 export const renderCardsList = (cards) => {
 	const cardsContainer = document.querySelector('.js-cards-container');
 
-
 	cards.forEach(cardItem => {
 		const card = createCard(
 			cardItem.imageLink,
@@ -15,9 +14,8 @@ export const renderCardsList = (cards) => {
 			cardItem.title
 		);
 
-		return cardsContainer.append(card);
+		cardsContainer.append(card);
 
 	});
-
 
 };
