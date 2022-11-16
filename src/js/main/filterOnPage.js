@@ -1,6 +1,5 @@
 import { renderCardsList } from '../app/cards/renderCardsList';
 import {
-  showErrorText,
   appendErrorElement,
   filteringCardsByTags,
   filteringCardsByIncomingData
@@ -39,8 +38,7 @@ export const filterBySearch = (cards) => {
     if (filteredCardsWithAuthor.length > 0) return renderCardsList(filteredCardsWithAuthor);
     if (filteredCardsWithTitle.length === 0 || filteredCardsWithAuthor.length === 0) {
       return (
-        showErrorText(searchForm),
-        appendErrorElement(searchForm, 'Ничего не найдено.(js)'),
+        appendErrorElement(searchForm, 'Ничего не найдено.'),
         renderCardsList(cards)
       )
     };

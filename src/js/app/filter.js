@@ -1,12 +1,12 @@
 
-export const showErrorText = () => {
-  const error = document.querySelector('.error');
-  error.style.display = "block";
+// export const showErrorText = () => {
+//   const error = document.querySelector('.error');
+//   error.style.display = "block";
 
-  setTimeout(() => {
-    error.style.display = "none";
-  }, 5000);
-};
+//   setTimeout(() => {
+//     error.style.display = "none";
+//   }, 5000);
+// };
 
 export const appendErrorElement = (block, textError) => {
   const errorHTML = `<div class="error error--color">${textError}</div>`

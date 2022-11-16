@@ -1,13 +1,23 @@
 import { createCard } from './createСard';
 
+
 export const renderCardsList = (cards) => {
 	const cardsContainer = document.querySelector('.js-cards-container');
 
-	cardsContainer.innerHTML = cards.map((card) => {
 
-		return createCard(card);
+	cards.forEach(cardItem => {
+		const card = createCard(
+			cardItem.imageLink,
+			cardItem.likes,
+			cardItem.date,
+			cardItem.author,
+			cardItem.tags,
+			cardItem.title
+		);
 
-	}).join('');
+		return cardsContainer.append(card);
+
+	});
 
 
 };

@@ -32,11 +32,8 @@
                             placeholder="Введите тему ..." required>
                         <button class="search__btn btn btn--yellow btn--font" type="submit">Поиск</button>
                     </form>
-                    <div class="error error--color error--none error--pos">Ничего не найдено (CSS)</div>
                 </div>
-
                 <ul class="app__list cards  js-cards-container"></ul>
-
                 <div class="app__pagination pagination js-pagination-container">
                     <div class="pagination__arrows arrows">
                         <button class="arrow arrow--prev btn js-page-arrow"></button>
@@ -89,9 +86,7 @@
         <div class="sidebar__filter filter">
             <h3 class="sort__title title title--third">Фильтр по тегам:</h3>
 
-            <ul class="filter__tags tags js-tag-list">
-
-            </ul>
+            <ul class="filter__tags tags js-tag-list"></ul>
         </div>
     </div>
 
@@ -103,8 +98,57 @@
             <div class="modal__img js-modal-img"></div>
             <div class="modal__body js-modal-body"></div>
         </figure>
-
     </div>
+
+    <template id="cardTemplate">
+        <li class="cards__item card js-card" tabindex="1">
+            <figure class="card__content">
+                <img class="card__img js-card-img" alt="">
+
+                <figcaption class="card__info info">
+                    <div class="info__header">
+                        <div class="info__rating rating">
+                            <button class="rating__like btn js-btn-likes"></button>
+                            <span class="rating__result js-card-likes"></span>
+                        </div>
+
+                        <div class="info__date">
+                            <time class="date js-card-date" datetime="2022-09-05"></time>
+                        </div>
+                    </div>
+
+                    <div class="info__body">
+                        <p class="info__author author">
+                            by
+                            <span class="author__name js-card-author"></span>
+                        </p>
+                        <h2 class="info__title title title--second title--yellow js-card-title"></h2>
+                    </div>
+
+                    <ul class="info__tags tags js-card-tags">
+                        <!-- <li class="tags__item tag js-card-tag">
+                            <button class="tag__btn btn btn--bg-light-white btn--font-tag js-btn-tag" value="">
+                            </button>
+                        </li> -->
+                    </ul>
+                </figcaption>
+            </figure>
+        </li>
+    </template>
+
+    <template id="tags-template-white-border">
+        <li class="tags__item tag js-card-tag">
+            <button class="tag__btn btn btn--bg-light-white btn--font-tag js-btn-tag" value="">
+            </button>
+        </li>
+    </template>
+
+    <template id="tags-template">
+        <li class="tags__item tag">
+            <button class="tag__btn btn btn--border-yellow btn--color-black btn--font-tag js-btn-tag" value="">
+            </button>
+        </li>
+    </template>
 
     <div class="overlay js-overlay"></div>
 </body>

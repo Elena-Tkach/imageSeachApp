@@ -2,6 +2,8 @@ import { createTag } from './createTag';
 
 export const renderTagsList = (cards) => {
 	const containerTagList = document.querySelector('.js-tag-list');
+	
+
 
 	const getUniqueTags = (cards) => {
 		let tags = [];
@@ -20,11 +22,14 @@ export const renderTagsList = (cards) => {
 
 	};
 
+
+
 	const tagList = getUniqueTags(cards);
+	tagList.forEach(tagItem => {
+		const tag = createTag(tagItem);
+		return containerTagList.append(tag);
+	});
 
-	containerTagList.innerHTML = tagList.map(tag => {
-		return createTag(tag);
 
-	}).join('');
 
 };

@@ -1,10 +1,25 @@
 export const createTag = (tag) => {
-   return `
-			<li class="tags__item tag">
-                <button class="tag__btn btn btn--border-yellow btn--color-black btn--font-tag js-btn-tag" value="${tag}">
-                   ${tag}
-                </button>
-            </li>
-		`;
+
+   const tagTemplate = document.querySelector('#tags-template');
+   const cloneTagTemplate = tagTemplate.content.cloneNode(true);
+   const cloneBtnTag = cloneTagTemplate.querySelector('.js-btn-tag');
+
+   cloneBtnTag.setAttribute('value', tag);
+   cloneBtnTag.innerHTML = tag;
+
+   return cloneTagTemplate;
+
+};
+
+export const createTagInCard = (tag) => {
+
+   const tagTemplate = document.querySelector('#tags-template-white-border');
+   const cloneTagTemplate = tagTemplate.content.cloneNode(true);
+   const cloneBtnTag = cloneTagTemplate.querySelector('.js-btn-tag');
+
+   cloneBtnTag.setAttribute('value', tag);
+   cloneBtnTag.innerHTML = tag;
+
+   return cloneTagTemplate;
 
 };
