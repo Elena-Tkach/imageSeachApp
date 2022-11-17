@@ -1,8 +1,7 @@
 import { createCard } from './createСard';
-
+export const cardsContainer = document.querySelector('.js-cards-container');
 
 export const renderCardsList = (cards) => {
-	const cardsContainer = document.querySelector('.js-cards-container');
 
 	cards.forEach(cardItem => {
 		const card = createCard(
@@ -17,7 +16,10 @@ export const renderCardsList = (cards) => {
 		cardsContainer.append(card);
 
 	});
-	
 	return cards;
 
 };
+
+export const removeCards = (cards) => {
+	return cards.innerHTML = '';
+}

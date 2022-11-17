@@ -1,16 +1,16 @@
 import { cards } from '../consts';
-import { renderCardsList } from './cards/renderCardsList';
+import { renderCardsList, removeCards, cardsContainer } from './cards/renderCardsList';
+
+const newCards = JSON.parse(JSON.stringify(cards));
 
 export const sortCards = () => {
 	const sortContain = document.querySelector('.js-sort');
-	const cardList = cards;
 
 	const sortCards = (target, dataAtribute) => {
 		const data = target.getAttribute(`${dataAtribute}`);
 
-		cardList.sort((a, b) => {
+		newCards.sort((a, b) => {
 			const dateA = new Date(a.date), dateB = new Date(b.date);
-
 			switch (data) {
 				case 'date-up':
 					return dateA - dateB;
@@ -23,7 +23,8 @@ export const sortCards = () => {
 			};
 		});
 
-		return renderCardsList(cardList);
+		removeCards(cardsContainer);
+		return renderCardsList(newCards);
 	};
 
 
@@ -33,7 +34,9 @@ export const sortCards = () => {
 		if (sortData) {
 			return sortCards(event.target, 'data-sort');
 		}
-		return renderCardsList(cardList);
+
+		removeCards(cardsContainer);
+		return renderCardsList(newCards);
 
 	})
 

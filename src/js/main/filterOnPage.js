@@ -1,40 +1,63 @@
-import { renderCardsList } from '../app/cards/renderCardsList';
+import { cards } from '../consts';
+import { renderCardsList, removeCards, cardsContainer } from '../app/cards/renderCardsList';
 import {
   appendErrorElement,
   filteringCardsByTags,
   filteringCardsByIncomingData
 } from '../app/filter';
 
-export const filterByTags = (cards) => {
+const newCards = JSON.parse(JSON.stringify(cards));
+
+export const filterByTags = () => {
+
   document.body.addEventListener('click', event => {
     if (event.target.classList.contains('js-btn-tag')) {
-      const filterCardsByTags = filteringCardsByTags(event.target.value, cards);
-      if (filterCardsByTags.length > 0) return renderCardsList(filterCardsByTags);
-      if (filterCardsByTags.length === 0) return appendHtmlText(searchForm);
+
+      const filterCardsByTags = filteringCardsByTags(event.target.value, newCards);
+
+      if (filterCardsByTags.length > 0) {
+        removeCards(cardsContainer);
+        return renderCardsList(filterCardsByTags);
+      }
+
+      if (filterCardsByTags.length === 0) {
+        removeCards(cardsContainer);
+        return appendErrorElement(searchForm, 'Ничего не найдено.');
+      }
     }
   })
 };
 
-export const filterBySearch = (cards) => {
+export const filterBySearch = () => {
   const searchForm = document.querySelector('.js-form-search');
 
-  searchForm.addEventListener('focusin', (event) => {
-    if (event.target.value === '') return renderCardsList(cards);
+  searchForm.addEventListener('input', (event) => {
+    if (event.target.value === '') {
+      removeCards(cardsContainer);
+      return renderCardsList(newCards);
+    }
   });
 
   searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const targetValue = event.target.search.value;
-    const filteredCardsWithTitle = filteringCardsByIncomingData(targetValue.toLowerCase(), 'title', cards);
-    const filteredCardsWithAuthor = filteringCardsByIncomingData(targetValue.toLowerCase(), 'author', cards);
+    const filteredCardsWithTitle = filteringCardsByIncomingData(targetValue.toLowerCase(), 'title', newCards);
+    const filteredCardsWithAuthor = filteringCardsByIncomingData(targetValue.toLowerCase(), 'author', newCards);
 
-    if (targetValue === '') return renderCardsList(cards);
-    if (filteredCardsWithTitle.length > 0) return renderCardsList(filteredCardsWithTitle);
-    if (filteredCardsWithAuthor.length > 0) return renderCardsList(filteredCardsWithAuthor);
+    if (filteredCardsWithTitle.length > 0) {
+      removeCards(cardsContainer);
+      return renderCardsList(filteredCardsWithTitle);
+    }
+
+    if (filteredCardsWithAuthor.length > 0) {
+      removeCards(cardsContainer);
+      return renderCardsList(filteredCardsWithAuthor);
+    }
+
     if (filteredCardsWithTitle.length === 0 || filteredCardsWithAuthor.length === 0) {
       return (
         appendErrorElement(searchForm, 'Ничего не найдено.'),
-        renderCardsList(cards)
+        removeCards(cardsContainer)
       )
     };
   });
