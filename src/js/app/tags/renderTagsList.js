@@ -15,16 +15,14 @@ export const renderTagsList = (cards) => {
 		const uniqueTags = tags.filter((element, index) => {
 			return tags.indexOf(element) === index;
 		});
-
 		return uniqueTags;
 
 	};
 
 	const tagList = getUniqueTags(cards);
-
-	containerTagList.innerHTML = tagList.map(tag => {
-		return createTag(tag);
-
-	}).join('');
+	tagList.forEach(tagItem => {
+		const tag = createTag(tagItem, 'btn--border-yellow');
+		return containerTagList.append(tag);
+	});
 
 };

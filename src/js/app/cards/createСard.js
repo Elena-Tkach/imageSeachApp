@@ -1,63 +1,33 @@
+import { createTag } from '../tags/createTag';
 
-
-export const createCard = (card) => {
+export const createCard = (link, likes, date, author, tag, title) => {
 
   const capitalizeFirstLetter = (str) => {
     if (!str) return;
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
   }
 
-  const tags = (tags) => {
-    return `
-       <ul class="info__tags tags js-tags">
+  const cardTemplate = document.querySelector('#cardTemplate');
+  const cloneCardTemplate = cardTemplate.content.cloneNode(true);
+  const cardImg = cloneCardTemplate.querySelector('.js-card-img');
+  const cardLikes = cloneCardTemplate.querySelector('.js-card-likes');
+  const cardTitle = cloneCardTemplate.querySelector('.js-card-title');
+  const cardDate = cloneCardTemplate.querySelector('.js-card-date');
+  const cardAuthor = cloneCardTemplate.querySelector('.js-card-author');
+  const cardTagsList = cloneCardTemplate.querySelector('.js-card-tags');
 
-        ${tags.map((tag) => {
-      return `
-            <li class="tags__item tag">
-                <button class="tag__btn btn btn--bg-light-white btn--font-tag js-btn-tag" value="${tag}">
-                  #${tag}
-                </button>
-            </li>
-          `;
-    }).join(``)
-      }
-      </ul>
-    `;
-  };
+  tag.forEach(tagItem => {
+    const tag = createTag(tagItem, 'btn--bg-light-white');
+    cardTagsList.append(tag);
+  });
 
-  const cardCreate = () => {
-    return ` 
-        <li class="cards__item card js-card" tabindex="1">
-          <figure class="card__content">
-              <img class="card__img" src="${card.imageLink}" alt="${card.title}">
+  cardImg.setAttribute('src', link);
+  cardImg.setAttribute('alt', title);
+  cardLikes.innerHTML = likes;
+  cardDate.innerHTML = date;
+  cardAuthor.innerHTML = author;
+  cardTitle.innerHTML = capitalizeFirstLetter(title);
 
-              <figcaption class="card__info info">
-                  <div class="info__header">
-                      <div class="info__rating rating">
-                          <button class="rating__like btn js-btn-likes"></button>
-                          <span class="rating__result js-likes-result">${card.likes}</span>
-                      </div>
-
-                      <div class="info__date">
-                          <time class="date js-date" datetime="2022-09-05">${card.date}</time>
-                      </div>
-                  </div>
-
-                  <div class="info__body"> 
-                    
-                    <p class="info__author author">
-                    by
-                        <span class="author__name">${card.author}</span>
-                    </p>
-                    <h2 class="info__title title title--second title--yellow">${capitalizeFirstLetter(card.title)}</h2>
-                  </div>  
-                  ${tags(card.tags)}
-              </figcaption>
-          </figure>
-      </li>
-    `;
-  }
-
-  return cardCreate();
+  return cloneCardTemplate;
 
 };
