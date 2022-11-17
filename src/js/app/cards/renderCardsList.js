@@ -17,5 +17,7 @@ export const renderCardsList = (cards) => {
 		cardsContainer.append(card);
 
 	});
+	
+	return cards;
 
 };
