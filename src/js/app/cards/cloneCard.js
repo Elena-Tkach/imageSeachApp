@@ -2,7 +2,7 @@ export const cloneCardToModal = (target, title, img, box) => {
   const targetParent = target.closest('.card__content');
   const targetLikes = targetParent.querySelector('.rating');
   const targetTitle = targetParent.querySelector('.info__title');
-  const targetTags = targetParent.querySelector('.js-tags');
+  const targetTags = targetParent.querySelector('.js-card-tags');
   const targetAuthor = targetParent.querySelector('.author');
 
 

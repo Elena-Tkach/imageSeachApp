@@ -8,15 +8,19 @@ import { filterByTags, filterBySearch } from './main/filterOnPage';
 import { sidebarHandler } from './main/sidebar';
 import { modalCardHandler } from './main/largeCard';
 
+const newCards = JSON.parse(JSON.stringify(cards));
 
 sidebarHandler();
 modalCardHandler();
 renderColorPaginationAndPage();
-renderCardsList(cards);
-renderTagsList(cards);
-filterByTags(cards);
-filterBySearch(cards);
-sortCards(cards);
+renderCardsList(newCards);
+renderTagsList(newCards);
+filterByTags();
+filterBySearch();
+sortCards();
+
+
+
 
 
 
