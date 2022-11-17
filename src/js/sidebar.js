@@ -1,10 +1,9 @@
-import { onShowContainer, onHideContainer } from '../app/modal';
+import { onShowContainer, onHideContainer } from './utils';
 
 export const sidebarHandler = () => {
   const btnOpenSidebarEl = document.querySelector('.js-btn-open-sidebar');
   const sidebarEl = document.querySelector('.js-sidebar');
   const overlayEl = document.querySelector('.js-overlay');
-
 
   btnOpenSidebarEl.addEventListener('click', () => {
     onShowContainer(sidebarEl);
