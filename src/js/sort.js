@@ -1,4 +1,4 @@
-import { cards } from '../consts';
+import { cards } from './consts';
 import { renderCardsList, removeCards, cardsContainer } from './cards/renderCardsList';
 
 const newCards = JSON.parse(JSON.stringify(cards));

@@ -1,10 +1,25 @@
-import { cards } from '../consts';
-import { renderCardsList, removeCards, cardsContainer } from '../app/cards/renderCardsList';
-import {
-  appendErrorElement,
-  filteringCardsByTags,
-  filteringCardsByIncomingData
-} from '../app/filter';
+import { cards } from './consts';
+import { renderCardsList, removeCards, cardsContainer } from './cards/renderCardsList';
+
+const appendErrorElement = (block, textError) => {
+  const errorHTML = `<div class="error error--color">${textError}</div>`
+  block.insertAdjacentHTML('beforebegin', errorHTML);
+
+  setTimeout(() => {
+    document.querySelector('.error').remove();
+  }, 5000);
+};
+
+
+
+const filteringCardsByTags = (target, cards) => {
+  return cards.filter(({ tags: arr }) => arr.some(tag => target.includes(tag)));
+};
+
+const filteringCardsByIncomingData = (target, search, cards) => {
+  return cards.filter(card => (card[search]).toLowerCase().includes(target));
+};
+
 
 const newCards = JSON.parse(JSON.stringify(cards));
 
@@ -62,5 +77,11 @@ export const filterBySearch = () => {
     };
   });
 
-
 }
+
+
+
+
+
+
+

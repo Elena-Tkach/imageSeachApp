@@ -1,4 +1,4 @@
-import { colors } from '../consts';
+import { colors } from './consts';
 
 export const renderColorPaginationAndPage = () => {
   const paginationContainer = document.querySelector('.js-pagination-container');
