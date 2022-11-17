@@ -9,7 +9,6 @@ import { sidebarHandler } from './main/sidebar';
 import { modalCardHandler } from './main/largeCard';
 
 const newCards = JSON.parse(JSON.stringify(cards));
-
 sidebarHandler();
 modalCardHandler();
 renderColorPaginationAndPage();
