@@ -8,7 +8,6 @@ import { filterByTags, filterBySearch } from './main/filterOnPage';
 import { sidebarHandler } from './main/sidebar';
 import { modalCardHandler } from './main/largeCard';
 
-
 sidebarHandler();
 modalCardHandler();
 renderColorPaginationAndPage();
