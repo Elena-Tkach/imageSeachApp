@@ -1,6 +1,6 @@
 import { createTag } from '../tags/createTag';
 
-export const createCard = (link, likes, date, author, tag, title) => {
+export const createCard = (link, likes, date, author, title) => {
 
   const capitalizeFirstLetter = (str) => {
     if (!str) return;
@@ -16,10 +16,10 @@ export const createCard = (link, likes, date, author, tag, title) => {
   const cardAuthor = cloneCardTemplate.querySelector('.js-card-author');
   const cardTagsList = cloneCardTemplate.querySelector('.js-card-tags');
 
-  tag.forEach(tagItem => {
-    const tag = createTag(tagItem, 'btn--bg-light-white');
-    cardTagsList.append(tag);
-  });
+  // tag.forEach(tagItem => {
+  //   const tag = createTag(tagItem, 'btn--bg-light-white');
+  //   cardTagsList.append(tag);
+  // });
 
   cardImg.setAttribute('src', link);
   cardImg.setAttribute('alt', title);
