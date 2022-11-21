@@ -1,11 +1,13 @@
-import { getImageData } from '../getApiImgs';
+import { getDataFromUnsplash } from '../getApiData';
 import { createCard } from './createСard';
+
 export const cardsContainer = document.querySelector('.js-cards-container');
 
-export const renderCardsList = async (cards) => {
-	const getResult = await getImageData();
+export const renderCardsList = async () => {
+	const result = await getDataFromUnsplash();
+	const copyResult = JSON.parse(JSON.stringify(result));
 
-	getResult.forEach(cardItem => {
+	copyResult.forEach(cardItem => {
 		var options = {
 			year: 'numeric',
 			month: 'numeric',
@@ -14,7 +16,6 @@ export const renderCardsList = async (cards) => {
 
 		const titleRes = cardItem.description === null ? 'Красивое фото' : cardItem.description;
 		const date = new Date(cardItem.created_at).toLocaleDateString('ru-Ru', options);
-		cardItem.urls.regular;
 
 		const card = createCard(
 			cardItem.urls.regular,
@@ -26,11 +27,13 @@ export const renderCardsList = async (cards) => {
 		);
 
 		cardsContainer.append(card);
-	})
-	return cards;
+	});
+
+	// return copyResult;
 
 };
 
-export const removeCards = (cards) => {
-	return cards.innerHTML = '';
+export const removeCards = async () => {
+	const result = await getDataFromUnsplash();
+	return result.innerHTML = '';
 }
