@@ -29,13 +29,14 @@ export const sortCards = async () => {
 	sortContain.addEventListener('click', async (event) => {
 		const data = event.target.getAttribute(`data-sort`);
 		const sortCard = sortCardsList(data);
+		console.log(sortCard);
 
 		if (data) {
-			console.log(sortCard);
+
 			removeCards(cardsContainer);
+			console.log(renderCardsList(sortCard))
 			return await renderCardsList(sortCard);
 		}
-		console.log(copyResult);
 		return await renderCardsList(copyResult);
 	})
 };
