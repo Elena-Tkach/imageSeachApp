@@ -1,13 +1,14 @@
-import { getDataFromUnsplash } from './getApiData';
+import { getDataFromApi } from './api';
 import { renderCardsList, removeCards, cardsContainer } from './cards/renderCardsList';
 
 export const sortCards = async () => {
 	const sortContain = document.querySelector('.js-sort');
-	const result = await getDataFromUnsplash();
-	const copyResult = JSON.parse(JSON.stringify(result));
+	const result = await getDataFromApi();
+	console.log(result);
+	// const copyResult = JSON.parse(JSON.stringify(result));
 
 	const sortCardsList = (data) => {
-		copyResult.sort((a, b) => {
+		result.sort((a, b) => {
 			const dateA = new Date(a.created_at), dateB = new Date(b.created_at);
 			switch (data) {
 				case 'date-up':

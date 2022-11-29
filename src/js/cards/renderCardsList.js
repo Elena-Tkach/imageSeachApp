@@ -1,33 +1,34 @@
-import { getDataFromUnsplash } from '../getApiData';
+import { getDataFromApi } from '../api';
 import { createCard } from './createСard';
 
 export const cardsContainer = document.querySelector('.js-cards-container');
 
 export const renderCardsList = async () => {
-	const result = await getDataFromUnsplash();
-	const copyResult = JSON.parse(JSON.stringify(result));
+	const result = await getDataFromApi();
 
-	copyResult.forEach(cardItem => {
-		var options = {
+	for (let item of result.results) {
+
+		const options = {
 			year: 'numeric',
 			month: 'numeric',
 			day: 'numeric'
 		};
 
-		const titleRes = cardItem.description === null ? 'Красивое фото' : cardItem.description;
-		const date = new Date(cardItem.created_at).toLocaleDateString('ru-Ru', options);
+		const titleRes = item.description ? item.description : item.alt_description;
+
+		const date = new Date(item.created_at).toLocaleDateString('ru-Ru', options);
 
 		const card = createCard(
-			cardItem.urls.regular,
-			cardItem.likes,
+			item.urls.regular,
+			item.likes,
 			date,
-			cardItem.user.name,
+			item.user.name,
 			// cardItem.tags,
 			titleRes
 		);
 
 		cardsContainer.append(card);
-	});
+	};
 
 	// return copyResult;
 
