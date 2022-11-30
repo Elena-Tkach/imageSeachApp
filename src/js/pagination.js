@@ -1,4 +1,6 @@
 import { colors } from './consts';
+import { getDataFromApi } from './api';
+import { queryParamDefinition } from './utils';
 
 export const renderColorPaginationAndPage = () => {
   const paginationContainer = document.querySelector('.js-pagination-container');
@@ -35,11 +37,31 @@ export const renderColorPaginationAndPage = () => {
   })
 }
 
-export const renderPagination = (result) => {
+export const createPaginationLink = (i, queryParam) => {
+  const paginTemplate = document.querySelector('#pagination-template');
+  const clonePaginTemplate = paginTemplate.content.cloneNode(true);
+  const link = clonePaginTemplate.querySelector('.js-page-btn');
+
+  link.setAttribute('href', `?page=${i}`);
+  (i === queryParam) ? link.classList.add('active') : '';
+
+  link.innerHTML = i;
+
+  return clonePaginTemplate;
+
+};
+
+
+export const renderPagination = async () => {
+  const listPageEl = document.querySelector('.js-pagination-list');
   const queryParam = queryParamDefinition();
-  const pages = Math.ceil(result.total / 10);
+  const result = await getDataFromApi(`texture`, queryParam);
+
+  const pages = Math.ceil(result.total / 1000);
 
   for (let i = pages; i >= 1; i--) {
-    listPageEl.insertAdjacentHTML('afterbegin', createPage(i, queryParam));
+    const page = createPaginationLink(i, queryParam);
+    listPageEl.prepend(page);
+    //  listPageEl.insertAdjacentHTML('afterbegin', createPaginationLink(i, queryParam));
   }
 };

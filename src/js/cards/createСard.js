@@ -3,11 +3,6 @@ import { capitalizeFirstLetter } from '../utils';
 
 export const createCard = (link, likes, date, author, tag, title) => {
 
-  // const capitalizeFirstLetter = (str) => {
-  //   if (!str) return;
-  //   return str[0].toUpperCase() + str.slice(1).toLowerCase();
-  // }
-
   const cardTemplate = document.querySelector('#cardTemplate');
   const cloneCardTemplate = cardTemplate.content.cloneNode(true);
   const cardImg = cloneCardTemplate.querySelector('.js-card-img');

@@ -1,7 +1,7 @@
 'use strict;'
 import { cards } from './consts';
 
-import { renderColorPaginationAndPage } from './pagination';
+import { renderColorPaginationAndPage, renderPagination } from './pagination';
 import { renderTagsList } from './tags/renderTagsList';
 import { renderCardsList } from './cards/renderCardsList';
 import { sortCards } from './sort';
@@ -14,10 +14,11 @@ sidebarHandler();
 modalCardHandler();
 renderColorPaginationAndPage();
 renderCardsList();
-renderTagsList(cards);
+renderTagsList();
 filterByTags();
 filterBySearch();
 sortCards();
+renderPagination()
 
 
 
