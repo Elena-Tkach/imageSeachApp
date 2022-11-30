@@ -1,11 +1,11 @@
 import { getDataFromApi } from '../api';
 import { createCard } from './createСard';
+import { capitalizeFirstLetter } from '../utils';
 
 export const cardsContainer = document.querySelector('.js-cards-container');
 
 export const renderCardsList = async () => {
 	const result = await getDataFromApi();
-
 	for (let item of result.results) {
 
 		const options = {
@@ -15,22 +15,26 @@ export const renderCardsList = async () => {
 		};
 
 		const titleRes = item.description ? item.description : item.alt_description;
-
 		const date = new Date(item.created_at).toLocaleDateString('ru-Ru', options);
+
+
+		let tags = item.tags.map(item => {
+			return capitalizeFirstLetter(item.title);
+		});
 
 		const card = createCard(
 			item.urls.regular,
 			item.likes,
 			date,
 			item.user.name,
-			// cardItem.tags,
+			tags,
 			titleRes
 		);
 
 		cardsContainer.append(card);
 	};
 
-	// return copyResult;
+	return result;
 
 };
 

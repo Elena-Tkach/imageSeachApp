@@ -23,6 +23,12 @@ export const onHideContainer = (container) => {
 
 };
 
+export const capitalizeFirstLetter = (str) => {
+  if (!str) return;
+  return str[0].toUpperCase() + str.slice(1).toLowerCase();
+}
+
+
 export const queryParamDefinition = () => {
   // определение query-параметра
   const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -37,6 +43,7 @@ export const queryParamDefinition = () => {
   }
   return queryParam;
 }
+
 
 
 

@@ -33,8 +33,13 @@ export const renderColorPaginationAndPage = () => {
       addClass(event.target);
     }
   })
-
-
-
-
 }
+
+export const renderPagination = (result) => {
+  const queryParam = queryParamDefinition();
+  const pages = Math.ceil(result.total / 10);
+
+  for (let i = pages; i >= 1; i--) {
+    listPageEl.insertAdjacentHTML('afterbegin', createPage(i, queryParam));
+  }
+};

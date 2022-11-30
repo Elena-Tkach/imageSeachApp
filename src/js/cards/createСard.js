@@ -1,11 +1,12 @@
 import { createTag } from '../tags/createTag';
+import { capitalizeFirstLetter } from '../utils';
 
-export const createCard = (link, likes, date, author, title) => {
+export const createCard = (link, likes, date, author, tag, title) => {
 
-  const capitalizeFirstLetter = (str) => {
-    if (!str) return;
-    return str[0].toUpperCase() + str.slice(1).toLowerCase();
-  }
+  // const capitalizeFirstLetter = (str) => {
+  //   if (!str) return;
+  //   return str[0].toUpperCase() + str.slice(1).toLowerCase();
+  // }
 
   const cardTemplate = document.querySelector('#cardTemplate');
   const cloneCardTemplate = cardTemplate.content.cloneNode(true);
@@ -16,10 +17,10 @@ export const createCard = (link, likes, date, author, title) => {
   const cardAuthor = cloneCardTemplate.querySelector('.js-card-author');
   const cardTagsList = cloneCardTemplate.querySelector('.js-card-tags');
 
-  // tag.forEach(tagItem => {
-  //   const tag = createTag(tagItem, 'btn--bg-light-white');
-  //   cardTagsList.append(tag);
-  // });
+  tag.forEach(tagItem => {
+    const tag = createTag(tagItem, 'btn--bg-light-white');
+    cardTagsList.append(tag);
+  });
 
   cardImg.setAttribute('src', link);
   cardImg.setAttribute('alt', title);

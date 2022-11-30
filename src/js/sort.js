@@ -4,8 +4,6 @@ import { renderCardsList, removeCards, cardsContainer } from './cards/renderCard
 export const sortCards = async () => {
 	const sortContain = document.querySelector('.js-sort');
 	const result = await getDataFromApi();
-	console.log(result);
-	// const copyResult = JSON.parse(JSON.stringify(result));
 
 	const sortCardsList = (data) => {
 		result.sort((a, b) => {
