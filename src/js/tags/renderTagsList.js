@@ -5,7 +5,6 @@ import { capitalizeFirstLetter } from '../utils';
 export const renderTagsList = async () => {
 	const containerTagList = document.querySelector('.js-tag-list');
 	const result = await getDataFromApi();
-	console.log(result);
 
 	const getUniqueTags = () => {
 		let tags = [];

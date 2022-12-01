@@ -1,7 +1,7 @@
 'use strict;'
 import { cards } from './consts';
 
-import { renderColorPaginationAndPage, renderPagination } from './pagination';
+import { renderColorPaginationAndPage, initPagination } from './pagination';
 import { renderTagsList } from './tags/renderTagsList';
 import { renderCardsList } from './cards/renderCardsList';
 import { sortCards } from './sort';
@@ -12,13 +12,13 @@ import { modalCardHandler } from './modalCard';
 // const newCards = getDataFromUnsplash();
 sidebarHandler();
 modalCardHandler();
-renderColorPaginationAndPage();
+// renderColorPaginationAndPage();
 renderCardsList();
 renderTagsList();
 filterByTags();
 filterBySearch();
 sortCards();
-renderPagination()
+initPagination()
 
 
 

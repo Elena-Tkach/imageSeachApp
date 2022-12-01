@@ -1,9 +1,38 @@
 import { colors } from './consts';
 import { getDataFromApi } from './api';
-import { queryParamDefinition } from './utils';
+const paginationContainer = document.querySelector('.js-pagination-container');
+
+export const initPagination = async () => {
+  const result = await getDataFromApi();
+ 
+  const createPagination = (page) => {
+    const paginTemplate = document.querySelector('#pagination-template');
+    const clonePaginTemplate = paginTemplate.content.cloneNode(true);
+    const pageBtn = clonePaginTemplate.querySelector('.js-page-btn');
+
+    pageBtn.setAttribute('value', `${page}`);
+    pageBtn.innerHTML = `${page}`;
+
+    return clonePaginTemplate;
+
+  };
+
+  const renderPagination = () => {
+    const listPageEl = document.querySelector('.js-pagination-list');
+    for (let i = 1; i < result.total_pages; i++) {
+      const page = createPagination(i);
+      listPageEl.append(page);
+    }
+  };
+
+  return renderPagination();
+
+}
+
+
 
 export const renderColorPaginationAndPage = () => {
-  const paginationContainer = document.querySelector('.js-pagination-container');
+
   const pageBnts = document.querySelectorAll('.js-page-btn');
 
   const changeColorBodyBg = () => {
@@ -36,32 +65,3 @@ export const renderColorPaginationAndPage = () => {
     }
   })
 }
-
-export const createPaginationLink = (i, queryParam) => {
-  const paginTemplate = document.querySelector('#pagination-template');
-  const clonePaginTemplate = paginTemplate.content.cloneNode(true);
-  const link = clonePaginTemplate.querySelector('.js-page-btn');
-
-  link.setAttribute('href', `?page=${i}`);
-  (i === queryParam) ? link.classList.add('active') : '';
-
-  link.innerHTML = i;
-
-  return clonePaginTemplate;
-
-};
-
-
-export const renderPagination = async () => {
-  const listPageEl = document.querySelector('.js-pagination-list');
-  const queryParam = queryParamDefinition();
-  const result = await getDataFromApi(`texture`, queryParam);
-
-  const pages = Math.ceil(result.total / 1000);
-
-  for (let i = pages; i >= 1; i--) {
-    const page = createPaginationLink(i, queryParam);
-    listPageEl.prepend(page);
-    //  listPageEl.insertAdjacentHTML('afterbegin', createPaginationLink(i, queryParam));
-  }
-};

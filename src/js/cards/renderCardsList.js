@@ -38,6 +38,6 @@ export const renderCardsList = async () => {
 };
 
 export const removeCards = async () => {
-	const result = await getDataFromUnsplash();
+	const result = await getDataFromApi();
 	return result.innerHTML = '';
 }
