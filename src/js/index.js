@@ -1,24 +1,26 @@
 'use strict;'
 import { cards } from './consts';
 
-import { renderColorPaginationAndPage, initPagination } from './pagination';
+import { renderPagination } from './pagination';
 import { renderTagsList } from './tags/renderTagsList';
 import { renderCardsList } from './cards/renderCardsList';
 import { sortCards } from './sort';
 import { filterByTags, filterBySearch } from './filter';
 import { sidebarHandler } from './sidebar';
 import { modalCardHandler } from './modalCard';
+import { queryParamDefinition } from './utils';
 
-// const newCards = getDataFromUnsplash();
+const queryParam = queryParamDefinition();
 sidebarHandler();
 modalCardHandler();
-// renderColorPaginationAndPage();
+
 renderCardsList();
 renderTagsList();
+renderPagination(queryParam);
 filterByTags();
 filterBySearch();
 sortCards();
-initPagination()
+
 
 
 

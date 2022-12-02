@@ -1,67 +1,44 @@
-import { colors } from './consts';
 import { getDataFromApi } from './api';
-const paginationContainer = document.querySelector('.js-pagination-container');
+import { queryParamDefinition } from './utils';
 
-export const initPagination = async () => {
-  const result = await getDataFromApi();
- 
-  const createPagination = (page) => {
-    const paginTemplate = document.querySelector('#pagination-template');
-    const clonePaginTemplate = paginTemplate.content.cloneNode(true);
-    const pageBtn = clonePaginTemplate.querySelector('.js-page-btn');
-
-    pageBtn.setAttribute('value', `${page}`);
-    pageBtn.innerHTML = `${page}`;
-
-    return clonePaginTemplate;
-
-  };
-
-  const renderPagination = () => {
-    const listPageEl = document.querySelector('.js-pagination-list');
-    for (let i = 1; i < result.total_pages; i++) {
-      const page = createPagination(i);
-      listPageEl.append(page);
-    }
-  };
-
-  return renderPagination();
-
+const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff', '#a75452'];
+const queryParam = queryParamDefinition();
+const changeColorBodyBg = () => {
+  const randomColor = Math.floor(Math.random() * colors.length);
+  document.body.style.background = colors[(randomColor)];
 }
 
+const createPagination = (page, queryParam) => {
+  const paginTemplate = document.querySelector('#pagination-template');
+  const clonePaginTemplate = paginTemplate.content.cloneNode(true);
+  const pageBtn = clonePaginTemplate.querySelector('.js-page-btn');
 
+  pageBtn.setAttribute(`href`, `index.html?page=${page}`);
+  pageBtn.setAttribute(`value`, `${page}`);
 
-export const renderColorPaginationAndPage = () => {
-
-  const pageBnts = document.querySelectorAll('.js-page-btn');
-
-  const changeColorBodyBg = () => {
-    const randomColor = Math.floor(Math.random() * colors.length);
-    document.body.style.background = colors[(randomColor)];
+  if (page == Number(queryParam)) {
+    changeColorBodyBg();
+    pageBtn.classList.add('active');
   }
 
-  const addClass = (target) => {
-    target.classList.add('active');
+  pageBtn.innerHTML = `${page}`;
+  return clonePaginTemplate;
+
+};
+
+const listPageEl = document.querySelector('.js-pagination-list');
+export const renderPagination = async (page) => {
+  const result = await getDataFromApi('fruits', queryParam);
+  const allPage = result.total_pages;
+  for (let i = 1; i < result.total_pages; i++) {
+    const pageItem = createPagination(i, queryParam);
+    listPageEl.append(pageItem);
   }
 
-  const deleteClass = (elements) => {
-    elements.forEach(element => {
-      element.classList.remove('active');
-    })
-  };
+};
 
 
-  paginationContainer.addEventListener('click', (event) => {
-    if (event.target.classList.contains('js-page-arrow')) {
-      changeColorBodyBg();
-      addClass(event.target);
-    }
 
-    if (event.target.classList.contains('js-page-btn')) {
 
-      deleteClass(pageBnts);
-      changeColorBodyBg();
-      addClass(event.target);
-    }
-  })
-}
+
+

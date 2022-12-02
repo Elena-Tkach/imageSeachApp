@@ -1,11 +1,12 @@
 import { getDataFromApi } from '../api';
 import { createCard } from './createСard';
-import { capitalizeFirstLetter } from '../utils';
+import { capitalizeFirstLetter, queryParamDefinition } from '../utils';
 
 export const cardsContainer = document.querySelector('.js-cards-container');
 
 export const renderCardsList = async () => {
-	const result = await getDataFromApi();
+	const queryParam = queryParamDefinition();
+	const result = await getDataFromApi('fruits', queryParam);
 	for (let item of result.results) {
 		const options = {
 			year: 'numeric',
