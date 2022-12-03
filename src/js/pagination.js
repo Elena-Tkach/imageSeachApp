@@ -29,7 +29,6 @@ const createPagination = (page, queryParam) => {
 const listPageEl = document.querySelector('.js-pagination-list');
 export const renderPagination = async (page) => {
   const result = await getDataFromApi('fruits', queryParam);
-  const allPage = result.total_pages;
   for (let i = 1; i < result.total_pages; i++) {
     const pageItem = createPagination(i, queryParam);
     listPageEl.append(pageItem);
