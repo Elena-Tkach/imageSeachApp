@@ -1,5 +1,5 @@
 import { getDataFromApi } from './api';
-import { renderCardsList, removeCards, cardsContainer } from './cards/renderCardsList';
+import { renderCardsList, removeCards, cardsContainer } from './cards';
 
 export const sortCards = async () => {
 	const sortContain = document.querySelector('.js-sort');
