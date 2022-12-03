@@ -1,5 +1,5 @@
 import { cards } from './consts';
-import { renderCardsList, removeCards, cardsContainer } from './cards/renderCardsList';
+import { renderCardsList, removeCards, cardsContainer } from './cards';
 
 const appendErrorElement = (block, textError) => {
   const errorHTML = `<div class="error error--color">${textError}</div>`

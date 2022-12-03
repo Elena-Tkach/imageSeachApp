@@ -1,40 +1,41 @@
-import { colors } from './consts';
 
-export const renderColorPaginationAndPage = () => {
-  const paginationContainer = document.querySelector('.js-pagination-container');
-  const pageBnts = document.querySelectorAll('.js-page-btn');
-
-  const changeColorBodyBg = () => {
-    const randomColor = Math.floor(Math.random() * colors.length);
-    document.body.style.background = colors[(randomColor)];
-  }
-
-  const addClass = (target) => {
-    target.classList.add('active');
-  }
-
-  const deleteClass = (elements) => {
-    elements.forEach(element => {
-      element.classList.remove('active');
-    })
-  };
+const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff', '#a75452'];
 
 
-  paginationContainer.addEventListener('click', (event) => {
-    if (event.target.classList.contains('js-page-arrow')) {
-      changeColorBodyBg();
-      addClass(event.target);
-    }
-
-    if (event.target.classList.contains('js-page-btn')) {
-
-      deleteClass(pageBnts);
-      changeColorBodyBg();
-      addClass(event.target);
-    }
-  })
-
-
-
-
+const changeColorBodyBg = () => {
+  const randomColor = Math.floor(Math.random() * colors.length);
+  document.body.style.background = colors[(randomColor)];
 }
+
+const createPagination = (page, queryParam) => {
+  const paginTemplate = document.querySelector('#pagination-template');
+  const clonePaginTemplate = paginTemplate.content.cloneNode(true);
+  const pageBtn = clonePaginTemplate.querySelector('.js-page-btn');
+
+  pageBtn.setAttribute(`href`, `index.html?page=${page}`);
+  pageBtn.setAttribute(`value`, `${page}`);
+
+  if (page == Number(queryParam)) {
+    changeColorBodyBg();
+    pageBtn.classList.add('active');
+  }
+
+  pageBtn.innerHTML = `${page}`;
+  return clonePaginTemplate;
+
+};
+
+export const renderPagination = (result, queryParam) => {
+  const listPageEl = document.querySelector('.js-pagination-list');
+
+  for (let i = 1; i < result.total_pages; i++) {
+    const pageItem = createPagination(i, queryParam);
+    listPageEl.append(pageItem);
+  }
+};
+
+
+
+
+
+
