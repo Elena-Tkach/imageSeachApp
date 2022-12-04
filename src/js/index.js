@@ -13,9 +13,10 @@ import { queryParamDefinition } from './utils';
 
 const appInit = async () => {
   const queryParam = queryParamDefinition();
-  const result = await getDataFromApi('fruits', queryParam);
-  
-  filterBySearch();
+  const serch = filterBySearch();
+
+  const result = await getDataFromApi(serch, queryParam);
+
   renderPagination(result, queryParam);
   renderCardsList(result);
   renderTagsList(result);

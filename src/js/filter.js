@@ -42,9 +42,9 @@ export const filterByTags = () => {
     }
   })
 };
+const searchForm = document.querySelector('.js-form-search');
 
-export const filterBySearch = () => {
-  const searchForm = document.querySelector('.js-form-search');
+export const filterBySearchA = () => {
 
   searchForm.addEventListener('input', (event) => {
     if (event.target.value === '') {
@@ -78,6 +78,16 @@ export const filterBySearch = () => {
   });
 
 }
+
+export const filterBySearch = () => {
+  // const input = document.querySelector('.input');
+  searchForm.addEventListener('input', (event) => {
+    console.log(event.target.value);
+    // return renderCardsList();
+  })
+}
+
+
 
 
 
