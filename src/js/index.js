@@ -14,14 +14,12 @@ import { queryParamDefinition } from './utils';
 const appInit = async () => {
   const queryParam = queryParamDefinition();
   const result = await getDataFromApi('fruits', queryParam);
-  
+
   filterBySearch();
   renderPagination(result, queryParam);
   renderCardsList(result);
   renderTagsList(result);
-
   filterByTags();
-
   sortCards();
 }
 
