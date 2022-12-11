@@ -14,7 +14,7 @@ const createPagination = (page, queryParam) => {
 
   pageBtn.setAttribute(`href`, `index.html?page=${page}`);
   pageBtn.setAttribute(`value`, `${page}`);
-
+  
   if (page == Number(queryParam)) {
     changeColorBodyBg();
     pageBtn.classList.add('active');
@@ -33,6 +33,8 @@ export const renderPagination = (result, queryParam) => {
     listPageEl.append(pageItem);
   }
 };
+
+
 
 
 
