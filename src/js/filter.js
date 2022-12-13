@@ -1,14 +1,6 @@
 import { cards } from './consts';
 import { renderCardsList, removeCards, cardsContainer } from './cards';
 
-const appendErrorElement = (block, textError) => {
-  const errorHTML = `<div class="error error--color">${textError}</div>`
-  block.insertAdjacentHTML('beforebegin', errorHTML);
-
-  setTimeout(() => {
-    document.querySelector('.error').remove();
-  }, 5000);
-};
 
 
 
@@ -16,12 +8,11 @@ const filteringCardsByTags = (target, cards) => {
   return cards.filter(({ tags: arr }) => arr.some(tag => target.includes(tag)));
 };
 
-const filteringCardsByIncomingData = (target, search, cards) => {
-  return cards.filter(card => (card[search]).toLowerCase().includes(target));
-};
+// const filteringCardsByIncomingData = (target, search, cards) => {
+//   return cards.filter(card => (card[search]).toLowerCase().includes(target));
+// };
 
-
-const newCards = JSON.parse(JSON.stringify(cards));
+;
 
 export const filterByTags = () => {
 
@@ -42,50 +33,8 @@ export const filterByTags = () => {
     }
   })
 };
-const searchForm = document.querySelector('.js-form-search');
 
-export const filterBySearchA = () => {
 
-  searchForm.addEventListener('input', (event) => {
-    if (event.target.value === '') {
-      removeCards(cardsContainer);
-      return renderCardsList(newCards);
-    }
-  });
-
-  searchForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const targetValue = event.target.search.value;
-    const filteredCardsWithTitle = filteringCardsByIncomingData(targetValue.toLowerCase(), 'title', newCards);
-    const filteredCardsWithAuthor = filteringCardsByIncomingData(targetValue.toLowerCase(), 'author', newCards);
-
-    if (filteredCardsWithTitle.length > 0) {
-      removeCards(cardsContainer);
-      return renderCardsList(filteredCardsWithTitle);
-    }
-
-    if (filteredCardsWithAuthor.length > 0) {
-      removeCards(cardsContainer);
-      return renderCardsList(filteredCardsWithAuthor);
-    }
-
-    if (filteredCardsWithTitle.length === 0 || filteredCardsWithAuthor.length === 0) {
-      return (
-        appendErrorElement(searchForm, 'Ничего не найдено.'),
-        removeCards(cardsContainer)
-      )
-    };
-  });
-
-}
-
-export const filterBySearch = () => {
-  // const input = document.querySelector('.input');
-  searchForm.addEventListener('input', (event) => {
-    console.log(event.target.value);
-    // return renderCardsList();
-  })
-}
 
 
 

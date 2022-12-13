@@ -29,7 +29,7 @@ const createCard = (link, likes, date, author, tag, title) => {
 
 };
 
-export const renderCardsList =  (result) => {
+export const renderCardsList = (result) => {
 	for (let item of result.results) {
 		const options = {
 			year: 'numeric',
@@ -60,6 +60,12 @@ export const renderCardsList =  (result) => {
 
 };
 
-export const removeCards = (result) => {
-	return result.results.innerHTML = '';
+// export const removeCards = (result) => {
+
+// 	return result.results.innerHTML = '';
+// }
+
+
+export const removeCards = () => {
+	return cardsContainer.innerHTML = '';
 }

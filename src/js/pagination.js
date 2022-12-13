@@ -7,7 +7,7 @@ const changeColorBodyBg = () => {
   document.body.style.background = colors[(randomColor)];
 }
 
-const createPagination = (page, queryParam) => {
+const createPagination = (page, pageParam) => {
   const paginTemplate = document.querySelector('#pagination-template');
   const clonePaginTemplate = paginTemplate.content.cloneNode(true);
   const pageBtn = clonePaginTemplate.querySelector('.js-page-btn');
@@ -15,7 +15,7 @@ const createPagination = (page, queryParam) => {
   pageBtn.setAttribute(`href`, `index.html?page=${page}`);
   pageBtn.setAttribute(`value`, `${page}`);
 
-  if (page == Number(queryParam)) {
+  if (page == Number(pageParam)) {
     changeColorBodyBg();
     pageBtn.classList.add('active');
   }
@@ -25,14 +25,21 @@ const createPagination = (page, queryParam) => {
 
 };
 
-export const renderPagination = (result, queryParam) => {
+export const renderPagination = (result, pageParam) => {
   const listPageEl = document.querySelector('.js-pagination-list');
 
   for (let i = 1; i < result.total_pages; i++) {
-    const pageItem = createPagination(i, queryParam);
+    const pageItem = createPagination(i, pageParam);
     listPageEl.append(pageItem);
   }
 };
+
+export const removePaginaton = () => {
+  const listPageEl = document.querySelector('.js-pagination-list');
+  return listPageEl.innerHTML = '';
+}
+
+
 
 
 
