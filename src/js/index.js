@@ -13,12 +13,11 @@ import { pageParamRequest } from './utils';
 
 const appInit = async () => {
   const pageParam = pageParamRequest();
-  const result = await getDataFromApi(pageParam);
+  const result = await getDataFromApi(pageParam, 'nature');
 
-
-  // renderPagination(result, pageParam);
-  // renderCardsList(result);
-  // renderTagsList(result);
+  renderCardsList(result);
+  renderTagsList(result);
+  renderPagination(result, pageParam);
   getSearchValue();
   // filterByTags();
   // sortCards();

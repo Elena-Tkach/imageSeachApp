@@ -1,7 +1,6 @@
 
 const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff', '#a75452'];
 
-
 const changeColorBodyBg = () => {
   const randomColor = Math.floor(Math.random() * colors.length);
   document.body.style.background = colors[(randomColor)];
@@ -22,14 +21,13 @@ const createPagination = (page, pageParam) => {
 
   pageBtn.innerHTML = `${page}`;
   return clonePaginTemplate;
-
 };
 
 export const renderPagination = (result, pageParam) => {
   const listPageEl = document.querySelector('.js-pagination-list');
 
-  for (let i = 1; i < result.total_pages; i++) {
-    const pageItem = createPagination(i, pageParam);
+  for (let i = 0; i < result.total_pages; i++) {
+    const pageItem = createPagination(i + 1, pageParam);
     listPageEl.append(pageItem);
   }
 };

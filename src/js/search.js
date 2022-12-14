@@ -5,33 +5,36 @@ import { renderPagination, removePaginaton } from './pagination';
 
 
 export const getSearchValue = async () => {
-  const pageParam = pageParamRequest();
-
   const searchForm = document.querySelector(`.js-form-search`);
   const input = document.querySelector(`.js-input`);
-  const result = await getDataFromApi(pageParam, 'building');
-
-  renderCardsList(result);
-  renderPagination(result);
+  const pageParam = pageParamRequest();
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     const query = input.value;
-    if (!query) return false;
-
     const search = await getDataFromApi(pageParam, query);
-    if (query === '') {
-      return await getDataFromApi(pageParam, '');
-    }
+
+    if (!query) return false;
+    if (query === '') return await getDataFromApi(pageParam, '');
+
 
     removeCards();
     removePaginaton();
     renderCardsList(search);
-    renderPagination(search);
-
+    renderPagination(search, pageParam);
 
   }
-  searchForm.addEventListener('input', handleSubmit);
+
+  searchForm.addEventListener('input', async () => {
+    if (input.value === '') {
+      const result = await getDataFromApi(pageParam, '');
+      removeCards();
+      removePaginaton();
+      renderCardsList(result);
+      renderPagination(result, pageParam);
+    }
+  })
+
   document.querySelector('.js-btn').addEventListener('click', handleSubmit)
 }
