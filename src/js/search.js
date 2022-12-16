@@ -18,15 +18,14 @@ export const getSearchValue = async () => {
     if (!query) return false;
     if (query === '') return await getDataFromApi(pageParam, '');
 
-
     removeCards();
     removePaginaton();
     renderCardsList(search);
     renderPagination(search, pageParam);
-
   }
 
-  searchForm.addEventListener('input', handleSubmit);
 
-  document.querySelector('.js-btn').addEventListener('click', handleSubmit)
+  // searchForm.addEventListener('input', handleSubmit);
+
+  searchForm.addEventListener('submit', handleSubmit);
 }
