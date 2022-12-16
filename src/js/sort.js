@@ -1,44 +1,70 @@
-// import { getDataFromApi } from './api';
-import { renderCardsList, removeCards, cardsContainer } from './cards';
+import { getDataFromApi } from './api';
+import { renderCardsList, removeCards } from './cards';
 
-export const sortCards = async (result) => {
+export const sortCards = async (result, pageParam, search) => {
 	const sortContain = document.querySelector('.js-sort');
-	// const result = await getDataFromApi();
-
-	const sortCardsList = (data) => {
-		result.sort((a, b) => {
-			const dateA = new Date(a.created_at), dateB = new Date(b.created_at);
-			switch (data) {
-				case 'date-up':
-					return dateA - dateB;
-				case 'date-down':
-					return dateB - dateA;
-				case 'like-up':
-					return b.likes - a.likes;
-				case 'like-down':
-					return a.likes - b.likes;
-			};
-
-		});
-
-		return result;
-	};
 
 
 	sortContain.addEventListener('click', async (event) => {
-		const data = event.target.getAttribute(`data-sort`);
-		const sortCard = sortCardsList(data);
-		console.log(sortCard);
+		const dataSort = event.target.getAttribute(`data-sort`);
 
-		if (data) {
-
-			removeCards(cardsContainer);
-			console.log(renderCardsList(sortCard))
-			return await renderCardsList(sortCard);
+		if (dataSort === 'date') {
+			const date = await getDataFromApi(pageParam, search, 'latest');
+			removeCards();
+			return renderCardsList(date, pageParam);
 		}
-		return await renderCardsList(copyResult);
+
+		if (dataSort === 'relevant') {
+			const relevant = await getDataFromApi(pageParam, search, 'relevant');
+			removeCards();
+			return renderCardsList(relevant, pageParam);
+		}
+
+		return renderCardsList(result, pageParam);
+
 	})
 };
+
+
+
+// export const sortCards = async (result) => {
+// 	const sortContain = document.querySelector('.js-sort');
+// 	// const result = await getDataFromApi();
+
+// 	const sortCardsList = (data) => {
+// 		result.sort((a, b) => {
+// 			const dateA = new Date(a.created_at), dateB = new Date(b.created_at);
+// 			switch (data) {
+// 				case 'date-up':
+// 					return dateA - dateB;
+// 				case 'date-down':
+// 					return dateB - dateA;
+// 				case 'like-up':
+// 					return b.likes - a.likes;
+// 				case 'like-down':
+// 					return a.likes - b.likes;
+// 			};
+
+// 		});
+
+// 		return result;
+// 	};
+
+
+// 	sortContain.addEventListener('click', async (event) => {
+// 		const data = event.target.getAttribute(`data-sort`);
+// 		const sortCard = sortCardsList(data);
+// 		console.log(sortCard);
+
+// 		if (data) {
+
+// 			removeCards(cardsContainer);
+// 			console.log(renderCardsList(sortCard))
+// 			return await renderCardsList(sortCard);
+// 		}
+// 		return await renderCardsList(copyResult);
+// 	})
+// };
 
 
 

@@ -19,8 +19,9 @@ const appInit = async () => {
   renderTagsList(result);
   renderPagination(result, pageParam);
   getSearchValue();
+
   // filterByTags();
-  // sortCards();
+  sortCards(result, pageParam, 'nature');
 }
 
 appInit();
