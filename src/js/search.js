@@ -26,15 +26,7 @@ export const getSearchValue = async () => {
 
   }
 
-  searchForm.addEventListener('input', async () => {
-    if (input.value === '') {
-      const result = await getDataFromApi(pageParam, '');
-      removeCards();
-      removePaginaton();
-      renderCardsList(result);
-      renderPagination(result, pageParam);
-    }
-  })
+  searchForm.addEventListener('input', handleSubmit);
 
   document.querySelector('.js-btn').addEventListener('click', handleSubmit)
 }
