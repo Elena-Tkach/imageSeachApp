@@ -20,3 +20,21 @@ export const getDataFromApi = async (pageParam, query = '', sort = 'relevant') =
   }
 
 };
+
+export const getDataSort = async (sort) => {
+  try {
+    const SEARCH = `search/photos`;
+    const response = await fetch(`${API_URL}${SEARCH}/?client_id=${API_KEY}&per_page=${MAX_CARDS_PER_PAGE}&order_by=${sort}`);
+    const result = await response.json();
+    console.log(result);
+    return result;
+
+  } catch (err) {
+    appendErrorElement(
+      document.querySelector(`.js-searchWrap`),
+      `Что-то пошло не так :( Попробуйте перезагрузить страницу`,
+      8000);
+  }
+
+};
+

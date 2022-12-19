@@ -1,5 +1,5 @@
 'use strict;'
-import { getDataFromApi } from './api';
+import { getDataFromApi, getDataSort } from './api';
 import { renderPagination } from './pagination';
 import { renderTagsList } from './tags';
 import { renderCardsList } from './cards';
@@ -14,6 +14,7 @@ import { pageParamRequest } from './utils';
 const appInit = async () => {
   const pageParam = pageParamRequest();
   const result = await getDataFromApi(pageParam, 'nature');
+  const sort = await getDataSort('latest');
 
   renderCardsList(result);
   renderTagsList(result);
