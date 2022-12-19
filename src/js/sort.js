@@ -9,6 +9,7 @@ export const sortCards = async (result, pageParam, search) => {
 		const dataSort = event.target.getAttribute(`data-sort`);
 
 		if (dataSort === 'date') {
+			console.log(dataSort);
 			const date = await getDataFromApi(pageParam, search, 'latest');
 			removeCards();
 			return renderCardsList(date, pageParam);

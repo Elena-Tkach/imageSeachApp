@@ -1,4 +1,5 @@
-
+import { getDataFromApi } from './api';
+import { renderCardsList, removeCards } from './cards';
 const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff', '#a75452'];
 
 const changeColorBodyBg = () => {
@@ -11,8 +12,8 @@ const createPagination = (page, pageParam) => {
   const clonePaginTemplate = paginTemplate.content.cloneNode(true);
   const pageBtn = clonePaginTemplate.querySelector('.js-page-btn');
 
-  pageBtn.setAttribute(`href`, `index.html?page=${page}`);
-  pageBtn.setAttribute(`value`, `${page}`);
+  // pageBtn.setAttribute(`href`, `index.html?page=${page}`);
+  // pageBtn.setAttribute(`value`, `${page}`);
 
   if (page == Number(pageParam)) {
     changeColorBodyBg();
@@ -30,12 +31,34 @@ export const renderPagination = (result, pageParam) => {
     const pageItem = createPagination(i + 1, pageParam);
     listPageEl.append(pageItem);
   }
+
+
 };
 
 export const removePaginaton = () => {
   const listPageEl = document.querySelector('.js-pagination-list');
   return listPageEl.innerHTML = '';
 }
+
+
+const paginationParent = document.querySelector('.js-pagination-list');
+
+paginationParent.addEventListener('click', async (event) => {
+
+  const pageBtn = event.target;
+  const activeBtn = paginationParent.querySelector('.active');
+
+  if (event.target.closest('.js-page-btn')) {
+    const activePageNum = pageBtn.textContent
+    const page = await getDataFromApi(activePageNum);
+
+    removeCards();
+    renderCardsList(page);
+
+    activeBtn.classList.remove('active');
+    pageBtn.classList.add('active');
+  }
+})
 
 
 
