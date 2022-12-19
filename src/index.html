@@ -26,29 +26,22 @@
                     Поисковик фото
                 </h1>
 
-                <div class="app__wrap">
-                    <form class="app__search  search js-form-search" action="#">
-                        <input class="search__input input input--yellow input--font" type="search" name="search"
-                            placeholder="Введите тему ..." required>
-                        <button class="search__btn btn btn--yellow btn--font" type="submit">Поиск</button>
+                <div class="app__wrap js-searchWrap">
+                    <form class="app__search  search js-form-search">
+                        <input class="search__input input input--yellow input--font js-input" type="search"
+                            name="search" placeholder="Введите тему ..." required>
+                        <button class="search__btn btn btn--yellow btn--font js-btn" type="submit">Поиск</button>
                     </form>
                 </div>
 
                 <ul class="app__list cards  js-cards-container"></ul>
 
                 <div class="app__pagination pagination js-pagination-container">
-                    <!-- <div class="pagination__arrows arrows">
+                    <div class="pagination__arrows arrows">
                         <button class="arrow arrow--prev btn js-arrow-prev"></button>
                         <button class="arrow arrow--next btn js-arraw-next"></button>
-                    </div> -->
+                    </div>
                     <ul class="pagination__pages pages js-pagination-list">
-                        <li class="pagination__page page js-arrow-prev">
-                            <a href="" class="page__btn btn arrow btn--font arrow--prev btn--white-h "></a>
-                        </li>
-
-                        <li class="pagination__page page js-arraw-next">
-                            <a href="" class="page__btn btn btn--font arrow arrow--next btn--white-h "></a>
-                        </li>
                     </ul>
                 </div>
             </section>
@@ -60,19 +53,18 @@
 
         <div class="sidebar__sort sort js-sort">
             <h3 class="sort__title title title--third">Cортировать:</h3>
-            <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-date-up" data-sort="date-up">
-                <span class="sort__label">дата:</span> по возрастанию
+            <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-date" data-sort="date">
+                <span class="sort__label"> по дате</span>
             </button>
-            <button class="sort__btn btn  btn--font btn--border-yellow-h js-sort-date-down" data-sort="date-down"><span
-                    class="sort__label">дата:</span> по
-                убыванию
+            <button class="sort__btn btn  btn--font btn--border-yellow-h js-sort-relevant" data-sort="relevant">
+                <span class="sort__label"> по релевантности</span>
             </button>
-            <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up" data-sort="like-up"> <span
+            <!-- <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-up" data-sort="like-up"> <span
                     class="sort__label">рейтинг:</span> от
                 большего</button>
             <button class="sort__btn btn btn--font btn--border-yellow-h js-sort-like-down" data-sort="like-down"> <span
                     class="sort__label">рейтинг:</span> от
-                меньшего</button>
+                меньшего</button> -->
         </div>
 
         <div class="sidebar__filter filter">

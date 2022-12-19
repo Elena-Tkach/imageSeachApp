@@ -29,7 +29,7 @@ const createCard = (link, likes, date, author, tag, title) => {
 
 };
 
-export const renderCardsList =  (result) => {
+export const renderCardsList = (result) => {
 	for (let item of result.results) {
 		const options = {
 			year: 'numeric',
@@ -37,8 +37,18 @@ export const renderCardsList =  (result) => {
 			day: 'numeric'
 		};
 
-		const titleRes = item.description ? item.description :
-			item.alt_description;
+		const titleRes = () => {
+			if (item.description) {
+				return item.description;
+			}
+			if (!item.description) {
+				return item.alt_description;
+			}
+			if (!item.alt_description && !item.description) {
+				return;
+			}
+		}
+		
 		const date = new Date(item.created_at).toLocaleDateString('ru-Ru', options);
 
 		let tags = item.tags.map(item => {
@@ -51,7 +61,7 @@ export const renderCardsList =  (result) => {
 			date,
 			item.user.name,
 			tags,
-			titleRes
+			titleRes(),
 		);
 		cardsContainer.append(card);
 	};
@@ -60,6 +70,12 @@ export const renderCardsList =  (result) => {
 
 };
 
-export const removeCards = (result) => {
-	return result.results.innerHTML = '';
+// export const removeCards = (result) => {
+
+// 	return result.results.innerHTML = '';
+// }
+
+
+export const removeCards = () => {
+	return cardsContainer.innerHTML = '';
 }

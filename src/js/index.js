@@ -1,26 +1,28 @@
 'use strict;'
-import { getDataFromApi } from './api';
+import { getDataFromApi, getDataSort } from './api';
 import { renderPagination } from './pagination';
 import { renderTagsList } from './tags';
 import { renderCardsList } from './cards';
 import { sortCards } from './sort';
-import { filterByTags, filterBySearch } from './filter';
+import { filterByTags } from './filter';
 import { sidebarHandler } from './sidebar';
 import { modalCardHandler } from './modalCard';
-import { queryParamDefinition } from './utils';
-
+import { getSearchValue } from './search';
+import { pageParamRequest } from './utils';
 
 
 const appInit = async () => {
-  const queryParam = queryParamDefinition();
-  const result = await getDataFromApi('fruits', queryParam);
+  const pageParam = pageParamRequest();
+  const result = await getDataFromApi(pageParam, 'nature');
+  const sort = await getDataSort('latest');
 
-  filterBySearch();
-  renderPagination(result, queryParam);
   renderCardsList(result);
   renderTagsList(result);
-  filterByTags();
-  sortCards();
+  renderPagination(result, pageParam);
+  getSearchValue();
+
+  // filterByTags();
+  sortCards(result, pageParam, 'nature');
 }
 
 appInit();

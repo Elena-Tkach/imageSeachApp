@@ -1,5 +1,3 @@
-
-
 .sidebar {
   z-index: 10;
   overflow: auto;
@@ -38,6 +36,7 @@
 }
 
 .sort__label {
+  pointer-events: none;
   position: relative;
   padding-left: 15px;
 
@@ -55,4 +54,3 @@
     background-color: $yellow;
   }
 }
-
