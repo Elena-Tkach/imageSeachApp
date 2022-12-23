@@ -1,5 +1,5 @@
 import { getDataFromApi } from './api';
-import { pageParamRequest } from './utils';
+// import { pageParamRequest } from './utils';
 import { renderCardsList, removeCards } from './cards';
 import { renderPagination, removePaginaton } from './pagination';
 import { globalState } from './index';
@@ -15,17 +15,15 @@ export const getCardsBySearchValue = async () => {
 
     const query = input.value;
     const search = await getDataFromApi(pageParam, query);
-    
 
     if (!query) return false;
     if (query === '') return await getDataFromApi(pageParam, '');
-    globalState.search = query;
-    
+
     removeCards();
     removePaginaton();
     renderCardsList(search);
     renderPagination(search, pageParam);
-
+    globalState.search = query;
   }
 
 

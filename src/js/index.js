@@ -20,8 +20,6 @@ const appInit = async () => {
   const pageParam = pageParamRequest();
   const result = await getDataFromApi(pageParam, 'nature');
  
-
-
   renderCardsList(result);
   renderTagsList(result);
   renderPagination(result, pageParam);
