@@ -1,5 +1,6 @@
 import { getDataFromApi } from './api';
 import { renderCardsList, removeCards } from './cards';
+import { sortCards } from './sort';
 
 const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff'];
 const paginationParent = document.querySelector('.js-pagination-list');
@@ -34,16 +35,30 @@ export const removePaginaton = () => {
 paginationParent.addEventListener('click', async (event) => {
   const pageBtn = event.target;
   const activeBtn = paginationParent.querySelector('.active');
+  const searchValue = JSON.parse(localStorage.getItem('searchParam'));
+
 
   if (event.target.closest('.js-page-btn')) {
     const activePageNum = pageBtn.textContent
     const page = await getDataFromApi(activePageNum);
 
-    removeCards();
-    renderCardsList(page);
-    changeColorBodyBg();
-    activeBtn.classList.remove('active');
-    pageBtn.classList.add('active');
+    if (searchValue) {
+      const search = await getDataFromApi(activePageNum, searchValue);
+      removeCards();
+      renderCardsList(search);
+      changeColorBodyBg();
+      activeBtn.classList.remove('active');
+      pageBtn.classList.add('active');
+    }
+
+    if (!searchValue) {
+      removeCards();
+      renderCardsList(page);
+      changeColorBodyBg();
+      activeBtn.classList.remove('active');
+      pageBtn.classList.add('active');
+    }
+
 
 
   }

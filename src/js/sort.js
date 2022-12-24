@@ -1,27 +1,25 @@
 import { getDataFromApi } from './api';
 import { renderCardsList, removeCards } from './cards';
+import { renderPagination, removePaginaton } from './pagination';
 
-export const sortCards = async (result, pageParam, search) => {
+export const sortCards = (page) => {
 	const sortContain = document.querySelector('.js-sort');
+	// const result = await getDataFromApi();
+	const searchValue = JSON.parse(localStorage.getItem('searchParam'));
 
 
 	sortContain.addEventListener('click', async (event) => {
 		const dataSort = event.target.getAttribute(`data-sort`);
 
-		if (dataSort === 'date') {
-			console.log(dataSort);
-			const date = await getDataFromApi(pageParam, search, 'latest');
-			removeCards();
-			return renderCardsList(date, pageParam);
-		}
+		if (dataSort) {
+			const sort = await getDataFromApi(page, searchValue, dataSort);
 
-		if (dataSort === 'relevant') {
-			const relevant = await getDataFromApi(pageParam, search, 'relevant');
 			removeCards();
-			return renderCardsList(relevant, pageParam);
+			// removePaginaton();
+			renderCardsList(sort);
+			// renderPagination(sort);
+			console.log(page, dataSort);
 		}
-
-		return renderCardsList(result, pageParam);
 
 	})
 };

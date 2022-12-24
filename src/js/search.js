@@ -6,7 +6,7 @@ import { renderPagination, removePaginaton } from './pagination';
 export const getCardsBySearchValue = async () => {
   const searchForm = document.querySelector(`.js-form-search`);
   const input = document.querySelector(`.js-input`);
-  const paginationParent = document.querySelector('.js-pagination-list');
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
