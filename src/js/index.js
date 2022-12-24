@@ -1,5 +1,5 @@
 'use strict;'
-import { getDataFromApi, getDataSort } from './api';
+import { getDataFromApi } from './api';
 import { renderPagination } from './pagination';
 import { renderTagsList } from './tags';
 import { renderCardsList } from './cards';
@@ -10,24 +10,33 @@ import { modalCardHandler } from './modalCard';
 import { getCardsBySearchValue } from './search';
 import { pageParamRequest } from './utils';
 
-export const globalState = {
+const globalState = {
   search: '',
-}
-
-
+};
 
 const appInit = async () => {
-  const pageParam = pageParamRequest();
-  const result = await getDataFromApi(pageParam, 'nature');
- 
-  renderCardsList(result);
-  renderTagsList(result);
-  renderPagination(result, pageParam);
-  getCardsBySearchValue();
+  const result = await getDataFromApi();
+  const searchValue = JSON.parse(localStorage.getItem('searchParam'));
 
-  console.log(globalState.search);
+
+  // if (searchValue) {
+
+  //   console.log(searchValue);
+
+  // }
+
+  if (searchValue) {
+    renderCardsList(result);
+    renderTagsList(result);
+    renderPagination(result);
+    getCardsBySearchValue();
+  }
+
+
+
+
   // filterByTags();
-  sortCards(result, pageParam, 'nature');
+  // sortCards(result, pageParam, 'nature');
 }
 
 appInit();

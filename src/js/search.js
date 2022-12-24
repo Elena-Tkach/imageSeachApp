@@ -1,33 +1,35 @@
 import { getDataFromApi } from './api';
-// import { pageParamRequest } from './utils';
 import { renderCardsList, removeCards } from './cards';
 import { renderPagination, removePaginaton } from './pagination';
-import { globalState } from './index';
 
 
 export const getCardsBySearchValue = async () => {
   const searchForm = document.querySelector(`.js-form-search`);
   const input = document.querySelector(`.js-input`);
-  const pageParam = pageParamRequest();
+  const paginationParent = document.querySelector('.js-pagination-list');
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-
+    event.preventDefault();
     const query = input.value;
-    const search = await getDataFromApi(pageParam, query);
+    localStorage.setItem('searchParam', JSON.stringify(query));
+
+    const search = await getDataFromApi(1, query);
 
     if (!query) return false;
-    if (query === '') return await getDataFromApi(pageParam, '');
+    if (query === '') return await getDataFromApi();
 
     removeCards();
     removePaginaton();
     renderCardsList(search);
-    renderPagination(search, pageParam);
-    globalState.search = query;
+    renderPagination(search);
+    searchForm.reset();
+
   }
+
 
 
   // searchForm.addEventListener('input', handleSubmit);
 
   searchForm.addEventListener('submit', handleSubmit);
+
 }

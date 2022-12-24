@@ -1,50 +1,37 @@
 import { getDataFromApi } from './api';
 import { renderCardsList, removeCards } from './cards';
-const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff', '#a75452'];
+
+const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff'];
+const paginationParent = document.querySelector('.js-pagination-list');
 
 const changeColorBodyBg = () => {
   const randomColor = Math.floor(Math.random() * colors.length);
   document.body.style.background = colors[(randomColor)];
 }
 
-const createPagination = (page, pageParam) => {
+const createPagination = (page) => {
   const paginTemplate = document.querySelector('#pagination-template');
   const clonePaginTemplate = paginTemplate.content.cloneNode(true);
   const pageBtn = clonePaginTemplate.querySelector('.js-page-btn');
-
-  // pageBtn.setAttribute(`href`, `index.html?page=${page}`);
-  // pageBtn.setAttribute(`value`, `${page}`);
-
-  if (page == Number(pageParam)) {
-    changeColorBodyBg();
+  if (page == 1) {
     pageBtn.classList.add('active');
   }
-
   pageBtn.innerHTML = `${page}`;
   return clonePaginTemplate;
 };
 
-export const renderPagination = (result, pageParam) => {
-  const listPageEl = document.querySelector('.js-pagination-list');
-
+export const renderPagination = (result) => {
   for (let i = 0; i < result.total_pages; i++) {
-    const pageItem = createPagination(i + 1, pageParam);
-    listPageEl.append(pageItem);
+    const pageItem = createPagination(i + 1);
+    paginationParent.append(pageItem);
   }
-
-
 };
 
 export const removePaginaton = () => {
-  const listPageEl = document.querySelector('.js-pagination-list');
-  return listPageEl.innerHTML = '';
+  return paginationParent.innerHTML = '';
 }
 
-
-const paginationParent = document.querySelector('.js-pagination-list');
-
 paginationParent.addEventListener('click', async (event) => {
-
   const pageBtn = event.target;
   const activeBtn = paginationParent.querySelector('.active');
 
@@ -54,9 +41,11 @@ paginationParent.addEventListener('click', async (event) => {
 
     removeCards();
     renderCardsList(page);
-
+    changeColorBodyBg();
     activeBtn.classList.remove('active');
     pageBtn.classList.add('active');
+
+
   }
 })
 

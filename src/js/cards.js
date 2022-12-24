@@ -70,12 +70,6 @@ export const renderCardsList = (result) => {
 
 };
 
-// export const removeCards = (result) => {
-
-// 	return result.results.innerHTML = '';
-// }
-
-
 export const removeCards = () => {
 	return cardsContainer.innerHTML = '';
 }
