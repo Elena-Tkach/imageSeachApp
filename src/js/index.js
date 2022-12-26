@@ -3,8 +3,6 @@ import { getDataFromApi } from './api';
 import { renderPagination, removePaginaton } from './pagination';
 import { renderTagsList } from './tags';
 import { renderCardsList, removeCards } from './cards';
-import { sortCards } from './sort';
-import { filterByTags } from './filter';
 import { sidebarHandler } from './sidebar';
 import { modalCardHandler } from './modalCard';
 import { getCardsBySearchValue } from './search';
@@ -26,8 +24,6 @@ const appInit = async () => {
     renderCardsList(search);
     renderTagsList(search);
     renderPagination(search);
-    ;
-
   }
 
   if (!searchValue) {
@@ -39,10 +35,6 @@ const appInit = async () => {
   }
 
   getCardsBySearchValue();
-
-
-
-  // filterByTags();
 
 }
 
