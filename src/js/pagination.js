@@ -34,33 +34,53 @@ export const removePaginaton = () => {
 
 paginationParent.addEventListener('click', async (event) => {
   const pageBtn = event.target;
+
   const activeBtn = paginationParent.querySelector('.active');
-  const searchValue = JSON.parse(localStorage.getItem('searchParam'));
+  const previousStorageQuery = JSON.parse(localStorage.getItem('searchParam'));
+  const previousStorageSort = JSON.parse(localStorage.getItem('sort'));
 
 
   if (event.target.closest('.js-page-btn')) {
     const activePageNum = pageBtn.textContent
+    localStorage.setItem('page', JSON.stringify(activePageNum));
     const page = await getDataFromApi(activePageNum);
 
-    if (searchValue) {
-      const search = await getDataFromApi(activePageNum, searchValue);
+    console.log(previousStorageSort);
+    if (previousStorageQuery) {
+      const queryResults = await getDataFromApi(activePageNum, previousStorageQuery);
       removeCards();
-      renderCardsList(search);
+      renderCardsList(queryResults);
       changeColorBodyBg();
       activeBtn.classList.remove('active');
       pageBtn.classList.add('active');
     }
 
-    if (!searchValue) {
+    if (previousStorageSort) {
+      const sortResults = await getDataFromApi(activePageNum, 'nature', previousStorageSort);
+      console.log(sortResults);
+      removeCards();
+      renderCardsList(sortResults);
+      changeColorBodyBg();
+      activeBtn.classList.remove('active');
+      pageBtn.classList.add('active');
+    }
+
+    if (previousStorageSort && previousStorageQuery) {
+      const storageResults = await getDataFromApi(activePageNum, previousStorageQuery, previousStorageSort);
+      removeCards();
+      renderCardsList(storageResults);
+      changeColorBodyBg();
+      activeBtn.classList.remove('active');
+      pageBtn.classList.add('active');
+    }
+
+    if (!previousStorageQuery || !previousStorageSort) {
       removeCards();
       renderCardsList(page);
       changeColorBodyBg();
       activeBtn.classList.remove('active');
       pageBtn.classList.add('active');
     }
-
-
-
   }
 })
 

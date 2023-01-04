@@ -48,7 +48,7 @@ export const renderCardsList = (result) => {
 				return;
 			}
 		}
-		
+
 		const date = new Date(item.created_at).toLocaleDateString('ru-Ru', options);
 
 		let tags = item.tags.map(item => {

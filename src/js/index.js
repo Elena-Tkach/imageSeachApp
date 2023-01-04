@@ -6,6 +6,7 @@ import { renderCardsList, removeCards } from './cards';
 import { sidebarHandler } from './sidebar';
 import { modalCardHandler } from './modalCard';
 import { getCardsBySearchValue } from './search';
+import { sortCards } from './sort';
 
 
 const globalState = {
@@ -13,20 +14,29 @@ const globalState = {
 };
 
 const appInit = async () => {
-  const result = await getDataFromApi();
-  const searchValue = JSON.parse(localStorage.getItem('searchParam'));
 
-  if (searchValue) {
-  
-    const search = await getDataFromApi(1, searchValue);
+  const previousStorageQuery = JSON.parse(localStorage.getItem('searchParam'));
+  const previousStorageSort = JSON.parse(localStorage.getItem('sort'));
+  const previousStoragePage = JSON.parse(localStorage.getItem('page'));
+  const result = await getDataFromApi(previousStoragePage);
+  console.log(previousStoragePage);
+  console.log(previousStorageSort);
+
+
+  if (previousStorageQuery) {
+    const queryResults = await getDataFromApi(previousStoragePage, previousStorageQuery);
     removeCards();
     removePaginaton();
-    renderCardsList(search);
-    renderTagsList(search);
-    renderPagination(search);
+    renderCardsList(queryResults);
+    renderTagsList(queryResults);
+    renderPagination(queryResults);
   }
 
-  if (!searchValue) {
+  if (previousStoragePage) {
+    
+  }
+
+  if (!previousStorageQuery) {
     removeCards();
     removePaginaton();
     renderCardsList(result);
@@ -35,6 +45,7 @@ const appInit = async () => {
   }
 
   getCardsBySearchValue();
+  sortCards(1);
 
 }
 
