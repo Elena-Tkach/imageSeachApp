@@ -5,34 +5,42 @@ import { renderPagination, removePaginaton } from './pagination';
 export const sortCards = (page) => {
 	const sortContain = document.querySelector('.js-sort');
 	// const result = await getDataFromApi();
-	const previousStorageQuery = JSON.parse(localStorage.getItem('searchParam'));
-	const previousStoragePage = JSON.parse(localStorage.getItem('page'));
-	console.log(previousStoragePage);
+	const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
+	const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
+	const pageFromStorage = JSON.parse(localStorage.getItem('page'));
+
 
 	sortContain.addEventListener('click', async (event) => {
 		const dataSort = event.target.getAttribute(`data-sort`);
-
 		if (dataSort) {
 			localStorage.setItem('sort', JSON.stringify(dataSort));
+			const sortResult = await getDataFromApi(1, 'nature', dataSort);
 
-			if (previousStorageQuery) {
-				const queryResults = await getDataFromApi(1, previousStorageQuery, dataSort);
+			if (sortingFromStorage) {
+				if (queryFromStorage) {
+					const queryResult = await getDataFromApi(1, queryFromStorage, dataSort);
+
+					if (pageFromStorage) {
+						const pageResult = await getDataFromApi(pageFromStorage, queryFromStorage, dataSort);
+						removeCards();
+					
+						renderCardsList(pageResult);
+							// removePaginaton();
+						// renderPagination(pageResult);
+					}
+
+					removeCards();
+					// removePaginaton();
+					renderCardsList(queryResult);
+				}
+
+
+				console.log(sortResult);
 				removeCards();
-				removePaginaton();
-				renderCardsList(queryResults);
-				renderPagination(queryResults);
-
+				// removePaginaton();
+				renderCardsList(sortResult);
+				// renderPagination(sortResult);
 			}
-
-			if (!previousStorageQuery) {
-				const sort = await getDataFromApi(1, 'nature', dataSort);
-				console.log(sort);
-				removeCards();
-				removePaginaton();
-				renderCardsList(sort);
-				renderPagination(sort);
-			}
-
 		}
 
 	})

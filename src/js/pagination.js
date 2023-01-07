@@ -1,6 +1,6 @@
 import { getDataFromApi } from './api';
 import { renderCardsList, removeCards } from './cards';
-import { sortCards } from './sort';
+
 
 const colors = ['#c8dcdb', '#9ab5b5', '#a1acab', '#f7e7d2', '#e2ba65', '#f1d7da', '#e2e2e2', '#ffffff'];
 const paginationParent = document.querySelector('.js-pagination-list');
@@ -34,20 +34,18 @@ export const removePaginaton = () => {
 
 paginationParent.addEventListener('click', async (event) => {
   const pageBtn = event.target;
-
   const activeBtn = paginationParent.querySelector('.active');
-  const previousStorageQuery = JSON.parse(localStorage.getItem('searchParam'));
-  const previousStorageSort = JSON.parse(localStorage.getItem('sort'));
 
+  const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
+  const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
 
   if (event.target.closest('.js-page-btn')) {
     const activePageNum = pageBtn.textContent
     localStorage.setItem('page', JSON.stringify(activePageNum));
     const page = await getDataFromApi(activePageNum);
 
-    console.log(previousStorageSort);
-    if (previousStorageQuery) {
-      const queryResults = await getDataFromApi(activePageNum, previousStorageQuery);
+    if (queryFromStorage) {
+      const queryResults = await getDataFromApi(activePageNum, queryFromStorage, sortingFromStorage);
       removeCards();
       renderCardsList(queryResults);
       changeColorBodyBg();
@@ -55,32 +53,12 @@ paginationParent.addEventListener('click', async (event) => {
       pageBtn.classList.add('active');
     }
 
-    if (previousStorageSort) {
-      const sortResults = await getDataFromApi(activePageNum, 'nature', previousStorageSort);
-      console.log(sortResults);
-      removeCards();
-      renderCardsList(sortResults);
-      changeColorBodyBg();
-      activeBtn.classList.remove('active');
-      pageBtn.classList.add('active');
-    }
+    removeCards();
+    renderCardsList(page);
+    changeColorBodyBg();
+    activeBtn.classList.remove('active');
+    pageBtn.classList.add('active');
 
-    if (previousStorageSort && previousStorageQuery) {
-      const storageResults = await getDataFromApi(activePageNum, previousStorageQuery, previousStorageSort);
-      removeCards();
-      renderCardsList(storageResults);
-      changeColorBodyBg();
-      activeBtn.classList.remove('active');
-      pageBtn.classList.add('active');
-    }
-
-    if (!previousStorageQuery || !previousStorageSort) {
-      removeCards();
-      renderCardsList(page);
-      changeColorBodyBg();
-      activeBtn.classList.remove('active');
-      pageBtn.classList.add('active');
-    }
   }
 })
 
