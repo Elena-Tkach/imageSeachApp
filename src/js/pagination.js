@@ -21,46 +21,140 @@ const createPagination = (page) => {
   return clonePaginTemplate;
 };
 
-export const renderPagination = (result) => {
-  for (let i = 0; i < result.total_pages; i++) {
-    const pageItem = createPagination(i + 1);
-    paginationParent.append(pageItem);
-  }
-};
 
 export const removePaginaton = () => {
   return paginationParent.innerHTML = '';
 }
 
-paginationParent.addEventListener('click', async (event) => {
-  const pageBtn = event.target;
-  const activeBtn = paginationParent.querySelector('.active');
-
+export const renderPagination = (pages) => {
+  const arrowsParent = document.querySelector('.js-arrows');
+  const arrowPrev = document.querySelector('.js-arrow-prev');
+  const arrowNext = document.querySelector('.js-arraw-next');
   const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
   const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
+  const pageFromStorage = JSON.parse(localStorage.getItem('page'));
 
-  if (event.target.closest('.js-page-btn')) {
-    const activePageNum = pageBtn.textContent
-    localStorage.setItem('page', JSON.stringify(activePageNum));
-    const page = await getDataFromApi(activePageNum);
+  const totalPages = pages.total_pages; //всего страниц
+  const perPage = 5; //   сколько показываем
+  let currentPage = 1;
+  const numPages = Math.ceil(totalPages / perPage);
 
-    if (queryFromStorage) {
-      const queryResults = await getDataFromApi(activePageNum, queryFromStorage, sortingFromStorage);
-      removeCards();
-      renderCardsList(queryResults);
-      changeColorBodyBg();
-      activeBtn.classList.remove('active');
-      pageBtn.classList.add('active');
+  const pagination = (page) => {
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+
+    removePaginaton();
+
+    for (let i = (page - 1) * perPage; i < (page * perPage) && i < totalPages; i++) {
+      const pageItem = createPagination(i + 1);
+      paginationParent.append(pageItem);
     }
 
-    removeCards();
-    renderCardsList(page);
-    changeColorBodyBg();
-    activeBtn.classList.remove('active');
-    pageBtn.classList.add('active');
+    if (page < numPages) {
+      paginationParent.insertAdjacentHTML('beforeend', `<li class="pagination__page dot-right">...</li > `);
+    }
 
+    if (page > 1) {
+      paginationParent.insertAdjacentHTML('afterbegin', `<li class="pagination__page dot-left" style="margin-right: 15px;">...</li > `);
+    }
+
+    (page === 1) ? arrowPrev.disabled = true : arrowPrev.disabled = false;
+    (page === numPages) ? arrowNext.disabled = true : arrowNext.disabled = false;
   }
-})
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      pagination(currentPage);
+    }
+  }
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      pagination(currentPage);
+    }
+  }
+
+  pagination(1);
+
+  arrowsParent.addEventListener('click', event => {
+    if (event.target.closest('.js-arrow-prev')) {
+      prevPage();
+    }
+
+    if (event.target.closest('.js-arraw-next')) {
+      nextPage();
+    }
+  })
+
+  paginationParent.addEventListener('click', async (event) => {
+    const pageBtn = event.target;
+    const activeBtn = paginationParent.querySelector('.active');
+    if (event.target.closest('.dot-right')) {
+      nextPage();
+    }
+
+    if (event.target.closest('.dot-left')) {
+      prevPage();
+    }
+
+    if (event.target.closest('.js-page-btn')) {
+      const activePageNum = pageBtn.textContent
+      localStorage.setItem('page', JSON.stringify(activePageNum));
+      const page = await getDataFromApi(activePageNum);
+
+      if (queryFromStorage) {
+        const queryResults = await getDataFromApi(activePageNum, queryFromStorage, sortingFromStorage);
+        removeCards();
+        renderCardsList(queryResults);
+        changeColorBodyBg();
+        activeBtn.classList.remove('active');
+        pageBtn.classList.add('active');
+      }
+
+      removeCards();
+      renderCardsList(page);
+      changeColorBodyBg();
+      pageBtn.classList.add('active');
+
+      if (activeBtn) {
+        activeBtn.classList.remove('active');
+        pageBtn.classList.add('active');
+      }
+    }
+  })
+}
+
+// paginationParent.addEventListener('click', async (event) => {
+//   const pageBtn = event.target;
+//   const activeBtn = paginationParent.querySelector('.active');
+
+//   const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
+//   const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
+
+//   if (event.target.closest('.js-page-btn')) {
+//     const activePageNum = pageBtn.textContent
+//     localStorage.setItem('page', JSON.stringify(activePageNum));
+//     const page = await getDataFromApi(activePageNum);
+
+//     if (queryFromStorage) {
+//       const queryResults = await getDataFromApi(activePageNum, queryFromStorage, sortingFromStorage);
+//       removeCards();
+//       renderCardsList(queryResults);
+//       changeColorBodyBg();
+//       activeBtn.classList.remove('active');
+//       pageBtn.classList.add('active');
+//     }
+
+//     removeCards();
+//     renderCardsList(page);
+//     changeColorBodyBg();
+//     activeBtn.classList.remove('active');
+//     pageBtn.classList.add('active');
+
+//   }
+// })
 
 
 

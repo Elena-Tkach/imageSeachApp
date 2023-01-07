@@ -17,6 +17,7 @@ const appInit = async () => {
   const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
   const pageFromStorage = JSON.parse(localStorage.getItem('page'));
   const result = await getDataFromApi();
+  console.log(result);
 
   if (queryFromStorage) {
     const queryResults = await getDataFromApi(1, queryFromStorage);
@@ -81,7 +82,7 @@ const appInit = async () => {
         removeCards();
         renderCardsList(pageResult);
         renderTagsList(pageResult);
-        
+
         const pageActive = paginationParent.querySelector('.active');
         pageActive.classList.remove('active');
         page.classList.add('active');
