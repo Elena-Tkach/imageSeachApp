@@ -21,42 +21,52 @@ const createPagination = (page) => {
   return clonePaginTemplate;
 };
 
+const renderPagination = (page, perPage, totalPages) => {
+  for (let i = (page - 1) * perPage; i < page * perPage && i < totalPages; i++) {
+    const pageItem = createPagination(i + 1);
+    paginationParent.append(pageItem);
+  }
+}
+
+const renderPaginationDots = (page, numPages) => {
+  if (page < numPages) {
+    paginationParent.insertAdjacentHTML('beforeend', `
+    <li class="pagination__page ">
+    <butoon class="page__btn btn btn--white-h js-dots-right">...</butoon>
+    </li > `);
+  }
+
+  if (page > 1) {
+    paginationParent.insertAdjacentHTML('afterbegin', `
+    <li class="pagination__page"> 
+    <butoon class="page__btn btn btn--white-h js-dots-left">...</butoon>
+    </li > `);
+  }
+}
 
 export const removePaginaton = () => {
   return paginationParent.innerHTML = '';
 }
 
-export const renderPagination = (pages) => {
+export const pagination = (pages) => {
   const arrowsParent = document.querySelector('.js-arrows');
   const arrowPrev = document.querySelector('.js-arrow-prev');
   const arrowNext = document.querySelector('.js-arraw-next');
-  const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
-  const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
-  const pageFromStorage = JSON.parse(localStorage.getItem('page'));
 
-  const totalPages = pages.total_pages; //всего страниц
-  const perPage = 5; //   сколько показываем
+
+  const totalPages = pages.total_pages;
+  const perPage = 5;
   let currentPage = 1;
   const numPages = Math.ceil(totalPages / perPage);
 
-  const pagination = (page) => {
+
+  const checkPagination = (page) => {
     if (page < 1) page = 1;
     if (page > totalPages) page = totalPages;
 
     removePaginaton();
-
-    for (let i = (page - 1) * perPage; i < (page * perPage) && i < totalPages; i++) {
-      const pageItem = createPagination(i + 1);
-      paginationParent.append(pageItem);
-    }
-
-    if (page < numPages) {
-      paginationParent.insertAdjacentHTML('beforeend', `<li class="pagination__page dot-right">...</li > `);
-    }
-
-    if (page > 1) {
-      paginationParent.insertAdjacentHTML('afterbegin', `<li class="pagination__page dot-left" style="margin-right: 15px;">...</li > `);
-    }
+    renderPagination(page, perPage, totalPages);
+    renderPaginationDots(page, numPages);
 
     (page === 1) ? arrowPrev.disabled = true : arrowPrev.disabled = false;
     (page === numPages) ? arrowNext.disabled = true : arrowNext.disabled = false;
@@ -65,18 +75,18 @@ export const renderPagination = (pages) => {
   const prevPage = () => {
     if (currentPage > 1) {
       currentPage--;
-      pagination(currentPage);
+      checkPagination(currentPage);
     }
   }
 
   const nextPage = () => {
     if (currentPage < totalPages) {
       currentPage++;
-      pagination(currentPage);
+      checkPagination(currentPage);
     }
   }
 
-  pagination(1);
+  checkPagination(currentPage);
 
   arrowsParent.addEventListener('click', event => {
     if (event.target.closest('.js-arrow-prev')) {
@@ -91,36 +101,48 @@ export const renderPagination = (pages) => {
   paginationParent.addEventListener('click', async (event) => {
     const pageBtn = event.target;
     const activeBtn = paginationParent.querySelector('.active');
-    if (event.target.closest('.dot-right')) {
+    const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
+    const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
+    
+    if (event.target.closest('.js-dots-right')) {
       nextPage();
     }
 
-    if (event.target.closest('.dot-left')) {
+    if (event.target.closest('.js-dots-left')) {
       prevPage();
     }
 
     if (event.target.closest('.js-page-btn')) {
-      const activePageNum = pageBtn.textContent
+      const activePageNum = pageBtn.textContent;
+
+
+
       localStorage.setItem('page', JSON.stringify(activePageNum));
       const page = await getDataFromApi(activePageNum);
 
       if (queryFromStorage) {
-        const queryResults = await getDataFromApi(activePageNum, queryFromStorage, sortingFromStorage);
+        const queryResults = await getDataFromApi(activePageNum, queryFromStorage);
         removeCards();
         renderCardsList(queryResults);
         changeColorBodyBg();
-        activeBtn.classList.remove('active');
         pageBtn.classList.add('active');
+
+        if (activeBtn) {
+          activeBtn.classList.remove('active');
+          pageBtn.classList.add('active');
+        }
       }
 
-      removeCards();
-      renderCardsList(page);
-      changeColorBodyBg();
-      pageBtn.classList.add('active');
-
-      if (activeBtn) {
-        activeBtn.classList.remove('active');
+      if (!queryFromStorage) {
+        removeCards();
+        renderCardsList(page);
+        changeColorBodyBg();
         pageBtn.classList.add('active');
+
+        if (activeBtn) {
+          activeBtn.classList.remove('active');
+          pageBtn.classList.add('active');
+        }
       }
     }
   })

@@ -1,6 +1,6 @@
 import { getDataFromApi } from './api';
 import { renderCardsList, removeCards } from './cards';
-import { renderPagination, removePaginaton } from './pagination';
+import { pagination, removePaginaton } from './pagination';
 
 
 export const getCardsBySearchValue = async () => {
@@ -11,9 +11,11 @@ export const getCardsBySearchValue = async () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const query = input.value;
+    localStorage.removeItem('searchParam');
     localStorage.setItem('searchParam', JSON.stringify(query));
 
     const search = await getDataFromApi(1, query);
+    console.log(search);
 
     if (!query) return false;
     if (query === '') return await getDataFromApi();
@@ -21,7 +23,7 @@ export const getCardsBySearchValue = async () => {
     removeCards();
     removePaginaton();
     renderCardsList(search);
-    renderPagination(search);
+    pagination(search);
     searchForm.reset();
 
   }

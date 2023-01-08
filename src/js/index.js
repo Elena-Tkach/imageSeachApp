@@ -1,6 +1,6 @@
 'use strict;'
 import { getDataFromApi } from './api';
-import { renderPagination, removePaginaton } from './pagination';
+import { pagination, removePaginaton } from './pagination';
 import { renderTagsList } from './tags';
 import { renderCardsList, removeCards } from './cards';
 import { sidebarHandler } from './sidebar';
@@ -17,33 +17,35 @@ const appInit = async () => {
   const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
   const pageFromStorage = JSON.parse(localStorage.getItem('page'));
   const result = await getDataFromApi();
-  console.log(result);
 
   if (queryFromStorage) {
+    console.log(queryFromStorage)
     const queryResults = await getDataFromApi(1, queryFromStorage);
 
-    if (pageFromStorage) {
-      const queryPageResults = await getDataFromApi(pageFromStorage, queryFromStorage);
-      removeCards();
-      removePaginaton();
-      renderCardsList(queryPageResults);
-      renderTagsList(queryPageResults);
-      renderPagination(queryPageResults);
+    // if (pageFromStorage) {
+    //   const queryPageResults = await getDataFromApi(pageFromStorage, queryFromStorage);
+    //   removeCards();
+    //   removePaginaton();
+    //   renderCardsList(queryPageResults);
+    //   renderTagsList(queryPageResults);
+    //   pagination(queryPageResults);
 
-      if (sortingFromStorage) {
-        const queryPageSortResults = await getDataFromApi(pageFromStorage, queryFromStorage, sortingFromStorage);
-        removeCards();
-        removePaginaton();
-        renderCardsList(queryPageSortResults);
-        renderTagsList(queryPageSortResults);
-        renderPagination(queryPageSortResults);
-      }
-    }
+    //   if (sortingFromStorage) {
+    //     const queryPageSortResults = await getDataFromApi(pageFromStorage, queryFromStorage, sortingFromStorage);
+    //     removeCards();
+    //     removePaginaton();
+    //     renderCardsList(queryPageSortResults);
+    //     renderTagsList(queryPageSortResults);
+    //     pagination(queryPageSortResults);
+    //   }
+    // }
+
+
     removeCards();
     removePaginaton();
     renderCardsList(queryResults);
     renderTagsList(queryResults);
-    renderPagination(queryResults);
+    pagination(queryResults);
   }
 
   if (sortingFromStorage) {
@@ -55,25 +57,29 @@ const appInit = async () => {
       removePaginaton();
       renderCardsList(sortPageResults);
       renderTagsList(sortPageResults);
-      renderPagination(sortPageResults);
+      pagination(sortPageResults);
     }
 
     removeCards();
     removePaginaton();
     renderCardsList(sortResults);
     renderTagsList(sortResults);
-    renderPagination(sortResults);
+    pagination(sortResults);
   }
 
-  removeCards();
-  removePaginaton();
-  renderCardsList(result);
-  renderTagsList(result);
-  renderPagination(result);
+  if (!queryFromStorage || !sortingFromStorage || !pageFromStorage) {
+    removeCards();
+    removePaginaton();
+    renderCardsList(result);
+    renderTagsList(result);
+    pagination(result);
+
+  }
 
 
-  if (pageFromStorage) {
-    const pageResult = await getDataFromApi(pageFromStorage);
+
+  if (pageFromStorage ) {
+    const pageResult = await getDataFromApi(pageFromStorage,);
 
     const paginationParent = document.querySelector('.js-pagination-list');
     const paginations = document.querySelectorAll('.js-page-btn');
@@ -88,8 +94,6 @@ const appInit = async () => {
         page.classList.add('active');
       }
     })
-
-
   }
 
   getCardsBySearchValue();
