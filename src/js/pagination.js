@@ -53,12 +53,10 @@ export const pagination = (pages) => {
   const arrowPrev = document.querySelector('.js-arrow-prev');
   const arrowNext = document.querySelector('.js-arraw-next');
 
-
   const totalPages = pages.total_pages;
   const perPage = 5;
   let currentPage = 1;
   const numPages = Math.ceil(totalPages / perPage);
-
 
   const checkPagination = (page) => {
     if (page < 1) page = 1;
@@ -86,6 +84,11 @@ export const pagination = (pages) => {
     }
   }
 
+  const isActiveBtn = (activeBtn, pageBtn) => {
+    activeBtn.classList.remove('active');
+    pageBtn.classList.add('active');
+  }
+
   checkPagination(currentPage);
 
   arrowsParent.addEventListener('click', event => {
@@ -103,7 +106,7 @@ export const pagination = (pages) => {
     const activeBtn = paginationParent.querySelector('.active');
     const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
     const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
-    
+
     if (event.target.closest('.js-dots-right')) {
       nextPage();
     }
@@ -114,8 +117,6 @@ export const pagination = (pages) => {
 
     if (event.target.closest('.js-page-btn')) {
       const activePageNum = pageBtn.textContent;
-
-
 
       localStorage.setItem('page', JSON.stringify(activePageNum));
       const page = await getDataFromApi(activePageNum);
@@ -128,8 +129,19 @@ export const pagination = (pages) => {
         pageBtn.classList.add('active');
 
         if (activeBtn) {
-          activeBtn.classList.remove('active');
-          pageBtn.classList.add('active');
+          isActiveBtn(activeBtn, pageBtn);
+        }
+      }
+
+      if (sortingFromStorage) {
+        const queryResults = await getDataFromApi(activePageNum, queryFromStorage);
+        removeCards();
+        renderCardsList(queryResults);
+        changeColorBodyBg();
+        pageBtn.classList.add('active');
+
+        if (activeBtn) {
+          isActiveBtn(activeBtn, pageBtn);
         }
       }
 

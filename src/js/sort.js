@@ -4,7 +4,6 @@ import { renderPagination, removePaginaton } from './pagination';
 
 export const sortCards = (page) => {
 	const sortContain = document.querySelector('.js-sort');
-	// const result = await getDataFromApi();
 	const queryFromStorage = JSON.parse(localStorage.getItem('searchParam'));
 	const sortingFromStorage = JSON.parse(localStorage.getItem('sort'));
 	const pageFromStorage = JSON.parse(localStorage.getItem('page'));
@@ -14,32 +13,25 @@ export const sortCards = (page) => {
 		const dataSort = event.target.getAttribute(`data-sort`);
 		if (dataSort) {
 			localStorage.setItem('sort', JSON.stringify(dataSort));
-			const sortResult = await getDataFromApi(1, 'nature', dataSort);
 
 			if (sortingFromStorage) {
-				if (queryFromStorage) {
-					const queryResult = await getDataFromApi(1, queryFromStorage, dataSort);
-
-					if (pageFromStorage) {
-						const pageResult = await getDataFromApi(pageFromStorage, queryFromStorage, dataSort);
-						removeCards();
-					
-						renderCardsList(pageResult);
-							// removePaginaton();
-						// renderPagination(pageResult);
-					}
-
-					removeCards();
-					// removePaginaton();
-					renderCardsList(queryResult);
-				}
-
-
+				const sortResult = await getDataFromApi(1, 'nature', dataSort);
 				console.log(sortResult);
 				removeCards();
-				// removePaginaton();
 				renderCardsList(sortResult);
-				// renderPagination(sortResult);
+			}
+
+			if (queryFromStorage) {
+				const queryResult = await getDataFromApi(1, queryFromStorage, dataSort);
+
+				removeCards();
+				renderCardsList(queryResult);
+			}
+
+			if (pageFromStorage) {
+				const pageResult = await getDataFromApi(pageFromStorage, queryFromStorage, dataSort);
+				removeCards();
+				renderCardsList(pageResult);
 			}
 		}
 
